@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MunicipioEditDlg" widgetVar="MunicipioEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditMunicipioTitle}">
+            <h:form id="MunicipioEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{municipioController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditMunicipioLabel_idMUNICIPIO}" for="idMUNICIPIO" />
+                        <p:inputText id="idMUNICIPIO" value="#{municipioController.selected.idMUNICIPIO}" title="#{bundle.EditMunicipioTitle_idMUNICIPIO}" required="true" requiredMessage="#{bundle.EditMunicipioRequiredMessage_idMUNICIPIO}"/>
+                        <p:outputLabel value="#{bundle.EditMunicipioLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{municipioController.selected.nombre}" title="#{bundle.EditMunicipioTitle_nombre}" />
+                        <p:outputLabel value="#{bundle.EditMunicipioLabel_ESTADOidESTADO}" for="ESTADOidESTADO" />
+                        <p:selectOneMenu id="ESTADOidESTADO" value="#{municipioController.selected.ESTADOidESTADO}" required="true" requiredMessage="#{bundle.EditMunicipioRequiredMessage_ESTADOidESTADO}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{estadoController.itemsAvailableSelectOne}"
+                                           var="ESTADOidESTADOItem"
+                                           itemValue="#{ESTADOidESTADOItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditMunicipioLabel_SECCIONALidSECCIONAL}" for="SECCIONALidSECCIONAL" />
+                        <p:selectOneMenu id="SECCIONALidSECCIONAL" value="#{municipioController.selected.SECCIONALidSECCIONAL}" required="true" requiredMessage="#{bundle.EditMunicipioRequiredMessage_SECCIONALidSECCIONAL}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{seccionalController.itemsAvailableSelectOne}"
+                                           var="SECCIONALidSECCIONALItem"
+                                           itemValue="#{SECCIONALidSECCIONALItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{municipioController.update}" value="#{bundle.Save}" update="display,:MunicipioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'MunicipioEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="MunicipioEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AspectoCreateDlg" widgetVar="AspectoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateAspectoTitle}">
+            <h:form id="AspectoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{aspectoController.selected != null}" style="margin-bottom:10px">
+                        <p:outputLabel value="#{bundle.Label_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{aspectoController.selected.nombre}" />
+                        <p:outputLabel value="#{bundle.Criterio}" for="CRITERIOidCRITERIO" />
+                        <p:selectOneMenu id="CRITERIOidCRITERIO" value="#{aspectoController.selected.CRITERIOidCRITERIO}" >
+                            <f:selectItems value="#{criterioController.itemsAvailableSelectOne}"
+                                           var="CRITERIOidCRITERIOItem"
+                                           itemValue="#{CRITERIOidCRITERIOItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.Estado}" for="ESTADOidESTADO" />
+                        <p:selectOneMenu id="ESTADOidESTADO" value="#{aspectoController.selected.ESTADOidESTADO}" >
+                            <f:selectItems value="#{estadoController.itemsAvailableSelectOne}"
+                                           var="ESTADOidESTADOItem"
+                                           itemValue="#{ESTADOidESTADOItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <div id="botones" align="Center">
+                        <p:commandButton actionListener="#{aspectoController.create}" value="#{bundle.Save}" update="display,:AspectoListForm:datalist,:growl" oncomplete="handleSubmit(args,'AspectoCreateDialog');" onclick="CriterioCreateDialog.hide()"/>
+                        <p:commandButton value="#{bundle.Cancel}" onclick="AspectoCreateDialog.hide()"/>
+                    </div>    
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

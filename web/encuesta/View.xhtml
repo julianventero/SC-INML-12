@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EncuestaViewDlg" widgetVar="EncuestaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEncuestaTitle}">
+            <h:form id="EncuestaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{encuestaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEncuestaLabel_idENCUESTA}"/>
+                        <h:outputText value="#{encuestaController.selected.idENCUESTA}" title="#{bundle.ViewEncuestaTitle_idENCUESTA}"/>
+                        <h:outputText value="#{bundle.ViewEncuestaLabel_nombre}"/>
+                        <h:outputText value="#{encuestaController.selected.nombre}" title="#{bundle.ViewEncuestaTitle_nombre}"/>
+                        <h:outputText value="#{bundle.ViewEncuestaLabel_ESTADOidESTADO}"/>
+                        <h:outputText value="#{encuestaController.selected.ESTADOidESTADO}" title="#{bundle.ViewEncuestaTitle_ESTADOidESTADO}"/>
+                        <h:outputText value="#{bundle.ViewEncuestaLabel_SERVICIOFORENSEidSERVICIOFORENSE}"/>
+                        <h:outputText value="#{encuestaController.selected.SERVICIOFORENSEidSERVICIOFORENSE}" title="#{bundle.ViewEncuestaTitle_SERVICIOFORENSEidSERVICIOFORENSE}"/>
+                        <h:outputText value="#{bundle.ViewEncuestaLabel_USUARIOcedula}"/>
+                        <h:outputText value="#{encuestaController.selected.USUARIOcedula}" title="#{bundle.ViewEncuestaTitle_USUARIOcedula}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EncuestaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

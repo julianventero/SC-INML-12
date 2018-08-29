@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SeccionalCreateDlg" widgetVar="SeccionalCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateSeccionalTitle}">
+            <h:form id="SeccionalCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{seccionalController.selected != null}" style="margin-bottom:10px">
+                        <p:outputLabel value="#{bundle.Label_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{seccionalController.selected.nombre}" />
+                        <p:outputLabel value="#{bundle.Regional}" for="REGIONALidREGIONAL" />
+                        <p:selectOneMenu id="REGIONALidREGIONAL" value="#{seccionalController.selected.REGIONALidREGIONAL}">
+                            <f:selectItems value="#{regionalController.itemsAvailableSelectOne}"
+                                           var="REGIONALidREGIONALItem"
+                                           itemValue="#{REGIONALidREGIONALItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <div id="botones" align="Center">
+                        <p:commandButton actionListener="#{seccionalController.create}" value="#{bundle.Save}" update="display,:SeccionalListForm:datalist,:growl" oncomplete="handleSubmit(args,'SeccionalCreateDialog');" onclick="SeccionalCreateDialog.hide()"/>
+                        <p:commandButton value="#{bundle.Cancel}" onclick="SeccionalCreateDialog.hide()"/>
+                    </div>  
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

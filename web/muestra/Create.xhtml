@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MuestraCreateDlg" widgetVar="MuestraCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateMuestraTitle}">
+            <h:form id="MuestraCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{muestraController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateMuestraLabel_idMUESTRA}" for="idMUESTRA" />
+                        <p:inputText id="idMUESTRA" value="#{muestraController.selected.idMUESTRA}" title="#{bundle.CreateMuestraTitle_idMUESTRA}" required="true" requiredMessage="#{bundle.CreateMuestraRequiredMessage_idMUESTRA}"/>
+                        <p:outputLabel value="#{bundle.CreateMuestraLabel_planeada}" for="planeada" />
+                        <p:inputText id="planeada" value="#{muestraController.selected.planeada}" title="#{bundle.CreateMuestraTitle_planeada}" />
+                        <p:outputLabel value="#{bundle.CreateMuestraLabel_fechaMuestra}" for="fechaMuestra" />
+                        <p:calendar id="fechaMuestra" pattern="MM/dd/yyyy" value="#{muestraController.selected.fechaMuestra}" title="#{bundle.EditMuestraTitle_fechaMuestra}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateMuestraLabel_ENCUESTAidENCUESTA}" for="ENCUESTAidENCUESTA" />
+                        <p:selectOneMenu id="ENCUESTAidENCUESTA" value="#{muestraController.selected.ENCUESTAidENCUESTA}" required="true" requiredMessage="#{bundle.EditMuestraRequiredMessage_ENCUESTAidENCUESTA}">
+                            <f:selectItems value="#{encuestaController.itemsAvailableSelectOne}"
+                                           var="ENCUESTAidENCUESTAItem"
+                                           itemValue="#{ENCUESTAidENCUESTAItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{muestraController.create}" value="#{bundle.Save}" update="display,:MuestraListForm:datalist,:growl" oncomplete="handleSubmit(args,'MuestraCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="MuestraCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

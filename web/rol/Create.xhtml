@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="RolCreateDlg" widgetVar="RolCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateRolTitle}">
+            <h:form id="RolCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{rolController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateRolLabel_idROL}" for="idROL" />
+                        <p:inputText id="idROL" value="#{rolController.selected.idROL}" title="#{bundle.CreateRolTitle_idROL}" required="true" requiredMessage="#{bundle.CreateRolRequiredMessage_idROL}"/>
+                        <p:outputLabel value="#{bundle.CreateRolLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{rolController.selected.nombre}" title="#{bundle.CreateRolTitle_nombre}" />
+                        <p:outputLabel value="#{bundle.CreateRolLabel_permiso1}" for="permiso1" />
+                        <p:inputText id="permiso1" value="#{rolController.selected.permiso1}" title="#{bundle.CreateRolTitle_permiso1}" />
+                        <p:outputLabel value="#{bundle.CreateRolLabel_permiso2}" for="permiso2" />
+                        <p:inputText id="permiso2" value="#{rolController.selected.permiso2}" title="#{bundle.CreateRolTitle_permiso2}" />
+                        <p:outputLabel value="#{bundle.CreateRolLabel_permiso3}" for="permiso3" />
+                        <p:inputText id="permiso3" value="#{rolController.selected.permiso3}" title="#{bundle.CreateRolTitle_permiso3}" />
+                        <p:outputLabel value="#{bundle.CreateRolLabel_permiso4}" for="permiso4" />
+                        <p:inputText id="permiso4" value="#{rolController.selected.permiso4}" title="#{bundle.CreateRolTitle_permiso4}" />
+                        <p:outputLabel value="#{bundle.CreateRolLabel_permiso5}" for="permiso5" />
+                        <p:inputText id="permiso5" value="#{rolController.selected.permiso5}" title="#{bundle.CreateRolTitle_permiso5}" />
+                        <p:outputLabel value="#{bundle.CreateRolLabel_permiso6}" for="permiso6" />
+                        <p:inputText id="permiso6" value="#{rolController.selected.permiso6}" title="#{bundle.CreateRolTitle_permiso6}" />
+                        <p:outputLabel value="#{bundle.CreateRolLabel_permiso7}" for="permiso7" />
+                        <p:inputText id="permiso7" value="#{rolController.selected.permiso7}" title="#{bundle.CreateRolTitle_permiso7}" />
+                        <p:outputLabel value="#{bundle.CreateRolLabel_ESTADOidESTADO}" for="ESTADOidESTADO" />
+                        <p:selectOneMenu id="ESTADOidESTADO" value="#{rolController.selected.ESTADOidESTADO}" required="true" requiredMessage="#{bundle.EditRolRequiredMessage_ESTADOidESTADO}">
+                            <f:selectItems value="#{estadoController.itemsAvailableSelectOne}"
+                                           var="ESTADOidESTADOItem"
+                                           itemValue="#{ESTADOidESTADOItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{rolController.create}" value="#{bundle.Save}" update="display,:RolListForm:datalist,:growl" oncomplete="handleSubmit(args,'RolCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="RolCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

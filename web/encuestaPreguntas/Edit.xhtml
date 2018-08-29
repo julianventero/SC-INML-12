@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EncuestaPreguntasEditDlg" widgetVar="EncuestaPreguntasEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditEncuestaPreguntasTitle}">
+            <h:form id="EncuestaPreguntasEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{encuestaPreguntasController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditEncuestaPreguntasLabel_idENCUESTAPREGUNTAS}" for="idENCUESTAPREGUNTAS" />
+                        <p:inputText id="idENCUESTAPREGUNTAS" value="#{encuestaPreguntasController.selected.idENCUESTAPREGUNTAS}" title="#{bundle.EditEncuestaPreguntasTitle_idENCUESTAPREGUNTAS}" required="true" requiredMessage="#{bundle.EditEncuestaPreguntasRequiredMessage_idENCUESTAPREGUNTAS}"/>
+                        <p:outputLabel value="#{bundle.EditEncuestaPreguntasLabel_ENCUESTAidENCUESTA}" for="ENCUESTAidENCUESTA" />
+                        <p:selectOneMenu id="ENCUESTAidENCUESTA" value="#{encuestaPreguntasController.selected.ENCUESTAidENCUESTA}" required="true" requiredMessage="#{bundle.EditEncuestaPreguntasRequiredMessage_ENCUESTAidENCUESTA}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{encuestaController.itemsAvailableSelectOne}"
+                                           var="ENCUESTAidENCUESTAItem"
+                                           itemValue="#{ENCUESTAidENCUESTAItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditEncuestaPreguntasLabel_PREGUNTASidPREGUNTAS}" for="PREGUNTASidPREGUNTAS" />
+                        <p:selectOneMenu id="PREGUNTASidPREGUNTAS" value="#{encuestaPreguntasController.selected.PREGUNTASidPREGUNTAS}" required="true" requiredMessage="#{bundle.EditEncuestaPreguntasRequiredMessage_PREGUNTASidPREGUNTAS}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{preguntasController.itemsAvailableSelectOne}"
+                                           var="PREGUNTASidPREGUNTASItem"
+                                           itemValue="#{PREGUNTASidPREGUNTASItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{encuestaPreguntasController.update}" value="#{bundle.Save}" update="display,:EncuestaPreguntasListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EncuestaPreguntasEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EncuestaPreguntasEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

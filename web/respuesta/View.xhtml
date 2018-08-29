@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="RespuestaViewDlg" widgetVar="RespuestaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewRespuestaTitle}">
+            <h:form id="RespuestaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{respuestaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewRespuestaLabel_idRESPUESTA}"/>
+                        <h:outputText value="#{respuestaController.selected.idRESPUESTA}" title="#{bundle.ViewRespuestaTitle_idRESPUESTA}"/>
+                        <h:outputText value="#{bundle.ViewRespuestaLabel_respuesta}"/>
+                        <h:outputText value="#{respuestaController.selected.respuesta}" title="#{bundle.ViewRespuestaTitle_respuesta}"/>
+                        <h:outputText value="#{bundle.ViewRespuestaLabel_fechaRealizacion}"/>
+                        <h:outputText value="#{respuestaController.selected.fechaRealizacion}" title="#{bundle.ViewRespuestaTitle_fechaRealizacion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewRespuestaLabel_CLIENTEidCLIENTE}"/>
+                        <h:outputText value="#{respuestaController.selected.CLIENTEidCLIENTE}" title="#{bundle.ViewRespuestaTitle_CLIENTEidCLIENTE}"/>
+                        <h:outputText value="#{bundle.ViewRespuestaLabel_ENCUESTAPREGUNTASidENCUESTAPREGUNTAS}"/>
+                        <h:outputText value="#{respuestaController.selected.ENCUESTAPREGUNTASidENCUESTAPREGUNTAS}" title="#{bundle.ViewRespuestaTitle_ENCUESTAPREGUNTASidENCUESTAPREGUNTAS}"/>
+                        <h:outputText value="#{bundle.ViewRespuestaLabel_PARAMETROSMEDICIONidPARAMETROSMEDICION}"/>
+                        <h:outputText value="#{respuestaController.selected.PARAMETROSMEDICIONidPARAMETROSMEDICION}" title="#{bundle.ViewRespuestaTitle_PARAMETROSMEDICIONidPARAMETROSMEDICION}"/>
+                        <h:outputText value="#{bundle.ViewRespuestaLabel_SECCIONALidSECCIONAL}"/>
+                        <h:outputText value="#{respuestaController.selected.SECCIONALidSECCIONAL}" title="#{bundle.ViewRespuestaTitle_SECCIONALidSECCIONAL}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="RespuestaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

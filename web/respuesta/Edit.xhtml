@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="RespuestaEditDlg" widgetVar="RespuestaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditRespuestaTitle}">
+            <h:form id="RespuestaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{respuestaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditRespuestaLabel_idRESPUESTA}" for="idRESPUESTA" />
+                        <p:inputText id="idRESPUESTA" value="#{respuestaController.selected.idRESPUESTA}" title="#{bundle.EditRespuestaTitle_idRESPUESTA}" required="true" requiredMessage="#{bundle.EditRespuestaRequiredMessage_idRESPUESTA}"/>
+                        <p:outputLabel value="#{bundle.EditRespuestaLabel_respuesta}" for="respuesta" />
+                        <p:inputText id="respuesta" value="#{respuestaController.selected.respuesta}" title="#{bundle.EditRespuestaTitle_respuesta}" />
+                        <p:outputLabel value="#{bundle.EditRespuestaLabel_fechaRealizacion}" for="fechaRealizacion" />
+                        <p:calendar id="fechaRealizacion" pattern="MM/dd/yyyy" value="#{respuestaController.selected.fechaRealizacion}" title="#{bundle.EditRespuestaTitle_fechaRealizacion}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditRespuestaLabel_CLIENTEidCLIENTE}" for="CLIENTEidCLIENTE" />
+                        <p:selectOneMenu id="CLIENTEidCLIENTE" value="#{respuestaController.selected.CLIENTEidCLIENTE}" required="true" requiredMessage="#{bundle.EditRespuestaRequiredMessage_CLIENTEidCLIENTE}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{clienteController.itemsAvailableSelectOne}"
+                                           var="CLIENTEidCLIENTEItem"
+                                           itemValue="#{CLIENTEidCLIENTEItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditRespuestaLabel_ENCUESTAPREGUNTASidENCUESTAPREGUNTAS}" for="ENCUESTAPREGUNTASidENCUESTAPREGUNTAS" />
+                        <p:selectOneMenu id="ENCUESTAPREGUNTASidENCUESTAPREGUNTAS" value="#{respuestaController.selected.ENCUESTAPREGUNTASidENCUESTAPREGUNTAS}" required="true" requiredMessage="#{bundle.EditRespuestaRequiredMessage_ENCUESTAPREGUNTASidENCUESTAPREGUNTAS}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{encuestaPreguntasController.itemsAvailableSelectOne}"
+                                           var="ENCUESTAPREGUNTASidENCUESTAPREGUNTASItem"
+                                           itemValue="#{ENCUESTAPREGUNTASidENCUESTAPREGUNTASItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditRespuestaLabel_PARAMETROSMEDICIONidPARAMETROSMEDICION}" for="PARAMETROSMEDICIONidPARAMETROSMEDICION" />
+                        <p:selectOneMenu id="PARAMETROSMEDICIONidPARAMETROSMEDICION" value="#{respuestaController.selected.PARAMETROSMEDICIONidPARAMETROSMEDICION}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{parametrosMedicionController.itemsAvailableSelectOne}"
+                                           var="PARAMETROSMEDICIONidPARAMETROSMEDICIONItem"
+                                           itemValue="#{PARAMETROSMEDICIONidPARAMETROSMEDICIONItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditRespuestaLabel_SECCIONALidSECCIONAL}" for="SECCIONALidSECCIONAL" />
+                        <p:selectOneMenu id="SECCIONALidSECCIONAL" value="#{respuestaController.selected.SECCIONALidSECCIONAL}" required="true" requiredMessage="#{bundle.EditRespuestaRequiredMessage_SECCIONALidSECCIONAL}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{seccionalController.itemsAvailableSelectOne}"
+                                           var="SECCIONALidSECCIONALItem"
+                                           itemValue="#{SECCIONALidSECCIONALItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{respuestaController.update}" value="#{bundle.Save}" update="display,:RespuestaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'RespuestaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="RespuestaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

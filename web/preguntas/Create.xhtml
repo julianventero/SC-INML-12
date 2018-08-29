@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PreguntasCreateDlg" widgetVar="PreguntasCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreatePreguntasTitle}">
+            <h:form id="PreguntasCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{preguntasController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreatePreguntasLabel_idPREGUNTAS}" for="idPREGUNTAS" />
+                        <p:inputText id="idPREGUNTAS" value="#{preguntasController.selected.idPREGUNTAS}" title="#{bundle.CreatePreguntasTitle_idPREGUNTAS}" required="true" requiredMessage="#{bundle.CreatePreguntasRequiredMessage_idPREGUNTAS}"/>
+                        <p:outputLabel value="#{bundle.CreatePreguntasLabel_pregunta}" for="pregunta" />
+                        <p:inputText id="pregunta" value="#{preguntasController.selected.pregunta}" title="#{bundle.CreatePreguntasTitle_pregunta}" />
+                        <p:outputLabel value="#{bundle.CreatePreguntasLabel_ASPECTOidASPECTO}" for="ASPECTOidASPECTO" />
+                        <p:selectOneMenu id="ASPECTOidASPECTO" value="#{preguntasController.selected.ASPECTOidASPECTO}" required="true" requiredMessage="#{bundle.EditPreguntasRequiredMessage_ASPECTOidASPECTO}">
+                            <f:selectItems value="#{aspectoController.itemsAvailableSelectOne}"
+                                           var="ASPECTOidASPECTOItem"
+                                           itemValue="#{ASPECTOidASPECTOItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreatePreguntasLabel_ESTADOidESTADO}" for="ESTADOidESTADO" />
+                        <p:selectOneMenu id="ESTADOidESTADO" value="#{preguntasController.selected.ESTADOidESTADO}" required="true" requiredMessage="#{bundle.EditPreguntasRequiredMessage_ESTADOidESTADO}">
+                            <f:selectItems value="#{estadoController.itemsAvailableSelectOne}"
+                                           var="ESTADOidESTADOItem"
+                                           itemValue="#{ESTADOidESTADOItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreatePreguntasLabel_TIPOPREGUNTAidTIPOPREGUNTA}" for="TIPOPREGUNTAidTIPOPREGUNTA" />
+                        <p:selectOneMenu id="TIPOPREGUNTAidTIPOPREGUNTA" value="#{preguntasController.selected.TIPOPREGUNTAidTIPOPREGUNTA}" required="true" requiredMessage="#{bundle.EditPreguntasRequiredMessage_TIPOPREGUNTAidTIPOPREGUNTA}">
+                            <f:selectItems value="#{tipoPreguntaController.itemsAvailableSelectOne}"
+                                           var="TIPOPREGUNTAidTIPOPREGUNTAItem"
+                                           itemValue="#{TIPOPREGUNTAidTIPOPREGUNTAItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{preguntasController.create}" value="#{bundle.Save}" update="display,:PreguntasListForm:datalist,:growl" oncomplete="handleSubmit(args,'PreguntasCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PreguntasCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ParametrosMedicionEditDlg" widgetVar="ParametrosMedicionEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditParametrosMedicionTitle}">
+            <h:form id="ParametrosMedicionEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{parametrosMedicionController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditParametrosMedicionLabel_idPARAMETROSMEDICION}" for="idPARAMETROSMEDICION" />
+                        <p:inputText id="idPARAMETROSMEDICION" value="#{parametrosMedicionController.selected.idPARAMETROSMEDICION}" title="#{bundle.EditParametrosMedicionTitle_idPARAMETROSMEDICION}" required="true" requiredMessage="#{bundle.EditParametrosMedicionRequiredMessage_idPARAMETROSMEDICION}"/>
+                        <p:outputLabel value="#{bundle.EditParametrosMedicionLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{parametrosMedicionController.selected.nombre}" title="#{bundle.EditParametrosMedicionTitle_nombre}" />
+                        <p:outputLabel value="#{bundle.EditParametrosMedicionLabel_ESTADOidESTADO}" for="ESTADOidESTADO" />
+                        <p:selectOneMenu id="ESTADOidESTADO" value="#{parametrosMedicionController.selected.ESTADOidESTADO}" required="true" requiredMessage="#{bundle.EditParametrosMedicionRequiredMessage_ESTADOidESTADO}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{estadoController.itemsAvailableSelectOne}"
+                                           var="ESTADOidESTADOItem"
+                                           itemValue="#{ESTADOidESTADOItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{parametrosMedicionController.update}" value="#{bundle.Save}" update="display,:ParametrosMedicionListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ParametrosMedicionEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ParametrosMedicionEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

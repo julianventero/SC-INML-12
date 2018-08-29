@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="resources/css/default.css"/>
+        
+        
+    </h:head>
+
+    <h:body>
+        <p:growl id="growl" life="3000" />
+
+        <p:layout style="min-width:1110px;min-height:631px;">
+            <!-- Layout de la parte superior-->
+            <p:layoutUnit position="north" size="44" header="Sistema de encuestas de satisfacción clientes"> </p:layoutUnit>
+            <!-- Layout para el menu izquierdo-->
+            <p:layoutUnit position="west" resizable="true" style="height:100px">
+                <!-- Logo INML-->
+                <img  src="../Imagenes/INML.jpg"> </img>
+                
+                <h:form>
+                    <p:growl id="messages" showDetail="false"/>
+                    
+                <!--    <p:menu >
+                            
+                        <p:menuitem value="#{bundle.Home}" icon="ui-icon-home" />
+                            
+                    </p:menu> -->
+                    
+                    <p:panelMenu >
+                        
+                        <p:submenu label="Gestion preguntas">
+                            <p:menuitem value="#{bundle.Criterio}" outcome="/criterio/List" />
+                            <p:menuitem value="#{bundle.Aspecto}" outcome="/aspecto/List"  />
+                            <p:menuitem value="#{bundle.Preguntas}" outcome="/preguntas/List"  />
+                            <p:menuitem value="#{bundle.Tipo_pregunta}" outcome="/tipoPregunta/List"  />
+                            <p:menuitem value="#{bundle.Parametros_Medicion}" outcome="/parametrosMedicion/List"  />
+                            <p:menuitem value="#{bundle.PreguntasParametrosMedicion}" outcome="/preguntasParametrosMedicion/List"  />
+                        </p:submenu>
+                        
+                        <p:submenu label="Gestion Encuestas">
+                            <p:menuitem value="#{bundle.Encuestas}"  outcome="/encuesta/List"/>
+                            <p:menuitem value="#{bundle.Muestra_estadistica}"  outcome="/muestra/List"/>
+                            <p:menuitem value="#{bundle.Respuestas}"  outcome="/respuesta/List"/>
+                        </p:submenu>
+                        
+                        <p:submenu label="Gestion Servicios forenses" >
+                            <p:menuitem value="#{bundle.Grupo}"   outcome="/grupo/List"/>
+                            <p:menuitem value="#{bundle.Servicio_Forense}" outcome="/servicioForense/List"  />
+                        </p:submenu>
+                                                
+                        <p:submenu label="Gestion Usuarios">
+                            <p:menuitem value="#{bundle.Usuarios}"  outcome="/usuario/List"/>
+                            <p:menuitem value="#{bundle.Rol}"  outcome="/rol/List"/>
+                            <p:menuitem value="#{bundle.Estado}"  outcome="/estado/List"/>
+                        </p:submenu>
+                        
+                        <p:submenu label="Gestion Regionales">
+                            <p:menuitem value="#{bundle.Regional}" outcome="/regional/List" />
+                            <p:menuitem value="#{bundle.Seccional}" outcome="/seccional/List"/>
+                        </p:submenu>
+                        
+                        <p:submenu label="Gestion Clientes/Municipios">
+                            <p:menuitem value="#{bundle.Cliente}"  outcome="/cliente/List"/>
+                            <p:menuitem value="#{bundle.Municipio}"   outcome="/municipio/List"/>
+                        </p:submenu>
+                        
+                    </p:panelMenu>
+                    
+                    
+                    
+                </h:form>    
+                    
+            </p:layoutUnit>
+ 
+            <!-- Layout para el contenido dinamico-->
+            <p:layoutUnit position="center">
+                <ui:insert name="contenido" > 
+                Aqui va el contenido
+                </ui:insert>
+            
+            </p:layoutUnit>
+        
+        </p:layout>
+    
+    </h:body>
+
+</html>
+

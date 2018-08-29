@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+    </h:head>
+    
+    <h:body >
+        <h1 align="center"> Sistema de Información para el Nivel de Satisfacción Clientes </h1>
+        
+        <div id="Usuariologin" align="center"> 
+                      
+                      <p:outputLabel value="Usuario" for="usuario" />
+                      <p:inputText id="usuario"  required="true" requiredMessage="Campo necesario" placeholder="Número de cedula"/> 
+                      <br> </br>
+                      <p:outputLabel value="Contraseña" for="usuario" />
+                      <p:password id="contraseña"  required="true" requiredMessage="Campo necesario"/>
+                      <br> </br>
+                      <p:commandButton  value="Ingresar" >
+                          
+                      </p:commandButton> <br> </br>
+                      <h:link outcome="index.xhtml" value="Siguiente" />
+                   
+                     
+                      
+        </div>    
+    </h:body>  
+</html>
