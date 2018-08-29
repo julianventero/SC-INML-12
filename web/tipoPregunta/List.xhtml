@@ -6,40 +6,28 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 
-    <ui:composition template="/template.xhtml">
+    <ui:composition template="/template-admin.xhtml">
 
 
-        <ui:define name="title">
-            <h:outputText value="#{bundle.ListTipoPreguntaTitle}"></h:outputText>
-        </ui:define>
-
-        <ui:define name="body">
+        <ui:define name="contenido">
             <h:form id="TipoPreguntaListForm">
-                <p:panel header="#{bundle.ListTipoPreguntaTitle}">
+                <p:panel>
                     <p:dataTable id="datalist" value="#{tipoPreguntaController.items}" var="item"
                                  selectionMode="single" selection="#{tipoPreguntaController.selected}"
-                                 paginator="true"
+                                 paginator="true" paginatorPosition="bottom"
                                  rowKey="#{item.idTIPOPREGUNTA}"
-                                 rows="10"
-                                 rowsPerPageTemplate="10,20,30,40,50"
-                                 >
+                                 rows="5" >
 
                         <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
                         <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListTipoPreguntaTitle_idTIPOPREGUNTA}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idTIPOPREGUNTA}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListTipoPreguntaTitle_nombre}"/>
+                                <h:outputText value="#{bundle.Tipo_pregunta}"/>
                             </f:facet>
                             <h:outputText value="#{item.nombre}"/>
                         </p:column>
-                        <f:facet name="footer">
+                        <f:facet name="header">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{tipoPreguntaController.prepareCreate}" update=":TipoPreguntaCreateForm" oncomplete="PF('TipoPreguntaCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":TipoPreguntaViewForm" oncomplete="PF('TipoPreguntaViewDialog').show()" disabled="#{empty tipoPreguntaController.selected}"/>
                             <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":TipoPreguntaEditForm" oncomplete="PF('TipoPreguntaEditDialog').show()" disabled="#{empty tipoPreguntaController.selected}"/>

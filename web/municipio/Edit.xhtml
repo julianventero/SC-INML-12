@@ -11,28 +11,28 @@
         <p:dialog id="MunicipioEditDlg" widgetVar="MunicipioEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditMunicipioTitle}">
             <h:form id="MunicipioEditForm">
                 <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{municipioController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditMunicipioLabel_idMUNICIPIO}" for="idMUNICIPIO" />
-                        <p:inputText id="idMUNICIPIO" value="#{municipioController.selected.idMUNICIPIO}" title="#{bundle.EditMunicipioTitle_idMUNICIPIO}" required="true" requiredMessage="#{bundle.EditMunicipioRequiredMessage_idMUNICIPIO}"/>
-                        <p:outputLabel value="#{bundle.EditMunicipioLabel_nombre}" for="nombre" />
+                    <p:panelGrid columns="2" rendered="#{municipioController.selected != null}" style="margin-bottom:10px">
+                        <p:outputLabel value="#{bundle.Label_nombre}" for="nombre" />
                         <p:inputText id="nombre" value="#{municipioController.selected.nombre}" title="#{bundle.EditMunicipioTitle_nombre}" />
-                        <p:outputLabel value="#{bundle.EditMunicipioLabel_ESTADOidESTADO}" for="ESTADOidESTADO" />
-                        <p:selectOneMenu id="ESTADOidESTADO" value="#{municipioController.selected.ESTADOidESTADO}" required="true" requiredMessage="#{bundle.EditMunicipioRequiredMessage_ESTADOidESTADO}">
+                        <p:outputLabel value="#{bundle.Estado}" for="ESTADOidESTADO" />
+                        <p:selectOneMenu id="ESTADOidESTADO" value="#{municipioController.selected.ESTADOidESTADO}">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{estadoController.itemsAvailableSelectOne}"
                                            var="ESTADOidESTADOItem"
                                            itemValue="#{ESTADOidESTADOItem}"/>
                         </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.EditMunicipioLabel_SECCIONALidSECCIONAL}" for="SECCIONALidSECCIONAL" />
-                        <p:selectOneMenu id="SECCIONALidSECCIONAL" value="#{municipioController.selected.SECCIONALidSECCIONAL}" required="true" requiredMessage="#{bundle.EditMunicipioRequiredMessage_SECCIONALidSECCIONAL}">
+                        <p:outputLabel value="#{bundle.Seccional}" for="SECCIONALidSECCIONAL" />
+                        <p:selectOneMenu id="SECCIONALidSECCIONAL" value="#{municipioController.selected.SECCIONALidSECCIONAL}">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{seccionalController.itemsAvailableSelectOne}"
                                            var="SECCIONALidSECCIONALItem"
                                            itemValue="#{SECCIONALidSECCIONALItem}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{municipioController.update}" value="#{bundle.Save}" update="display,:MunicipioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'MunicipioEditDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="MunicipioEditDialog.hide()"/>
+                    <div id="botones" align="Center">
+                        <p:commandButton actionListener="#{municipioController.update}" value="#{bundle.Save}" update="display,:MunicipioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'MunicipioEditDialog');" onclick="MunicipioEditDialog.hide()"/>
+                        <p:commandButton value="#{bundle.Cancel}" onclick="MunicipioEditDialog.hide()"/>
+                    </div>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

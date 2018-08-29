@@ -6,52 +6,34 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 
-    <ui:composition template="/template.xhtml">
+    <ui:composition template="/template-admin.xhtml">
 
 
-        <ui:define name="title">
-            <h:outputText value="#{bundle.ListMunicipioTitle}"></h:outputText>
-        </ui:define>
-
-        <ui:define name="body">
+        <ui:define name="contenido">
             <h:form id="MunicipioListForm">
-                <p:panel header="#{bundle.ListMunicipioTitle}">
+                <p:panel >
                     <p:dataTable id="datalist" value="#{municipioController.items}" var="item"
                                  selectionMode="single" selection="#{municipioController.selected}"
-                                 paginator="true"
+                                 paginator="true" paginatorPosition="bottom"
                                  rowKey="#{item.idMUNICIPIO}"
-                                 rows="10"
-                                 rowsPerPageTemplate="10,20,30,40,50"
-                                 >
+                                 rows="10" >
 
                         <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
                         <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListMunicipioTitle_idMUNICIPIO}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idMUNICIPIO}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListMunicipioTitle_nombre}"/>
+                                <h:outputText value="#{bundle.Municipio}"/>
                             </f:facet>
                             <h:outputText value="#{item.nombre}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListMunicipioTitle_ESTADOidESTADO}"/>
+                                <h:outputText value="#{bundle.Seccional}"/>
                             </f:facet>
-                            <h:outputText value="#{item.ESTADOidESTADO}"/>
+                            <h:outputText value="#{item.SECCIONALidSECCIONAL.nombre}"/>
                         </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListMunicipioTitle_SECCIONALidSECCIONAL}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.SECCIONALidSECCIONAL}"/>
-                        </p:column>
-                        <f:facet name="footer">
+                        <f:facet name="header">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{municipioController.prepareCreate}" update=":MunicipioCreateForm" oncomplete="PF('MunicipioCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":MunicipioViewForm" oncomplete="PF('MunicipioViewDialog').show()" disabled="#{empty municipioController.selected}"/>
                             <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":MunicipioEditForm" oncomplete="PF('MunicipioEditDialog').show()" disabled="#{empty municipioController.selected}"/>

@@ -11,19 +11,21 @@
         <p:dialog id="PreguntasViewDlg" widgetVar="PreguntasViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewPreguntasTitle}">
             <h:form id="PreguntasViewForm">
                 <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{preguntasController.selected != null}">
-                        <h:outputText value="#{bundle.ViewPreguntasLabel_idPREGUNTAS}"/>
-                        <h:outputText value="#{preguntasController.selected.idPREGUNTAS}" title="#{bundle.ViewPreguntasTitle_idPREGUNTAS}"/>
-                        <h:outputText value="#{bundle.ViewPreguntasLabel_pregunta}"/>
-                        <h:outputText value="#{preguntasController.selected.pregunta}" title="#{bundle.ViewPreguntasTitle_pregunta}"/>
-                        <h:outputText value="#{bundle.ViewPreguntasLabel_ASPECTOidASPECTO}"/>
-                        <h:outputText value="#{preguntasController.selected.ASPECTOidASPECTO}" title="#{bundle.ViewPreguntasTitle_ASPECTOidASPECTO}"/>
-                        <h:outputText value="#{bundle.ViewPreguntasLabel_ESTADOidESTADO}"/>
-                        <h:outputText value="#{preguntasController.selected.ESTADOidESTADO}" title="#{bundle.ViewPreguntasTitle_ESTADOidESTADO}"/>
-                        <h:outputText value="#{bundle.ViewPreguntasLabel_TIPOPREGUNTAidTIPOPREGUNTA}"/>
-                        <h:outputText value="#{preguntasController.selected.TIPOPREGUNTAidTIPOPREGUNTA}" title="#{bundle.ViewPreguntasTitle_TIPOPREGUNTAidTIPOPREGUNTA}"/>
+                    <p:panelGrid columns="2" rendered="#{preguntasController.selected != null}" style="margin-bottom:10px">
+                        <h:outputText value="#{bundle.Label_id}"/>
+                        <h:outputText value="#{preguntasController.selected.idPREGUNTAS}"/>
+                        <h:outputText value="#{bundle.Pregunta}"/>
+                        <h:outputText value="#{preguntasController.selected.pregunta}" />
+                        <h:outputText value="#{bundle.Aspecto}"/>
+                        <h:outputText value="#{preguntasController.selected.ASPECTOidASPECTO.nombre}" />
+                        <h:outputText value="#{bundle.Estado}"/>
+                        <h:outputText value="#{preguntasController.selected.ESTADOidESTADO.nombre}"/>
+                        <h:outputText value="#{bundle.Tipo_pregunta}"/>
+                        <h:outputText value="#{preguntasController.selected.TIPOPREGUNTAidTIPOPREGUNTA.nombre}" />
                     </p:panelGrid>
-                    <p:commandButton value="#{bundle.Close}" onclick="PreguntasViewDialog.hide()"/>
+                    <div id="botones" align="Center">
+                        <p:commandButton value="#{bundle.Close}" onclick="PreguntasViewDialog.hide()"/>
+                    </div>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

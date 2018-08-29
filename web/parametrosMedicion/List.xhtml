@@ -6,46 +6,28 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 
-    <ui:composition template="/template.xhtml">
+    <ui:composition template="/template-admin.xhtml">
 
 
-        <ui:define name="title">
-            <h:outputText value="#{bundle.ListParametrosMedicionTitle}"></h:outputText>
-        </ui:define>
-
-        <ui:define name="body">
+        <ui:define name="contenido">
             <h:form id="ParametrosMedicionListForm">
-                <p:panel header="#{bundle.ListParametrosMedicionTitle}">
+                <p:panel >
                     <p:dataTable id="datalist" value="#{parametrosMedicionController.items}" var="item"
                                  selectionMode="single" selection="#{parametrosMedicionController.selected}"
-                                 paginator="true"
+                                 paginator="true" paginatorPosition="bottom"
                                  rowKey="#{item.idPARAMETROSMEDICION}"
-                                 rows="10"
-                                 rowsPerPageTemplate="10,20,30,40,50"
-                                 >
+                                 rows="15" >
 
                         <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
                         <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListParametrosMedicionTitle_idPARAMETROSMEDICION}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idPARAMETROSMEDICION}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListParametrosMedicionTitle_nombre}"/>
+                                <h:outputText value="#{bundle.Parametros_Medicion}"/>
                             </f:facet>
                             <h:outputText value="#{item.nombre}"/>
                         </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListParametrosMedicionTitle_ESTADOidESTADO}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.ESTADOidESTADO}"/>
-                        </p:column>
-                        <f:facet name="footer">
+                        <f:facet name="header">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{parametrosMedicionController.prepareCreate}" update=":ParametrosMedicionCreateForm" oncomplete="PF('ParametrosMedicionCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":ParametrosMedicionViewForm" oncomplete="PF('ParametrosMedicionViewDialog').show()" disabled="#{empty parametrosMedicionController.selected}"/>
                             <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":ParametrosMedicionEditForm" oncomplete="PF('ParametrosMedicionEditDialog').show()" disabled="#{empty parametrosMedicionController.selected}"/>

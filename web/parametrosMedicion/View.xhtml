@@ -11,15 +11,17 @@
         <p:dialog id="ParametrosMedicionViewDlg" widgetVar="ParametrosMedicionViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewParametrosMedicionTitle}">
             <h:form id="ParametrosMedicionViewForm">
                 <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{parametrosMedicionController.selected != null}">
-                        <h:outputText value="#{bundle.ViewParametrosMedicionLabel_idPARAMETROSMEDICION}"/>
-                        <h:outputText value="#{parametrosMedicionController.selected.idPARAMETROSMEDICION}" title="#{bundle.ViewParametrosMedicionTitle_idPARAMETROSMEDICION}"/>
-                        <h:outputText value="#{bundle.ViewParametrosMedicionLabel_nombre}"/>
-                        <h:outputText value="#{parametrosMedicionController.selected.nombre}" title="#{bundle.ViewParametrosMedicionTitle_nombre}"/>
-                        <h:outputText value="#{bundle.ViewParametrosMedicionLabel_ESTADOidESTADO}"/>
-                        <h:outputText value="#{parametrosMedicionController.selected.ESTADOidESTADO}" title="#{bundle.ViewParametrosMedicionTitle_ESTADOidESTADO}"/>
+                    <p:panelGrid columns="2" rendered="#{parametrosMedicionController.selected != null}" style="margin-bottom:10px">
+                        <h:outputText value="#{bundle.Label_id}"/>
+                        <h:outputText value="#{parametrosMedicionController.selected.idPARAMETROSMEDICION}"/>
+                        <h:outputText value="#{bundle.Label_nombre}"/>
+                        <h:outputText value="#{parametrosMedicionController.selected.nombre}" />
+                        <h:outputText value="#{bundle.Estado}"/>
+                        <h:outputText value="#{parametrosMedicionController.selected.ESTADOidESTADO.nombre}"/>
                     </p:panelGrid>
-                    <p:commandButton value="#{bundle.Close}" onclick="ParametrosMedicionViewDialog.hide()"/>
+                    <div id="botones" align="Center">
+                        <p:commandButton value="#{bundle.Close}" onclick="ParametrosMedicionViewDialog.hide()"/>
+                    </div>  
                 </h:panelGroup>
             </h:form>
         </p:dialog>

@@ -11,17 +11,19 @@
         <p:dialog id="MunicipioViewDlg" widgetVar="MunicipioViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewMunicipioTitle}">
             <h:form id="MunicipioViewForm">
                 <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{municipioController.selected != null}">
-                        <h:outputText value="#{bundle.ViewMunicipioLabel_idMUNICIPIO}"/>
-                        <h:outputText value="#{municipioController.selected.idMUNICIPIO}" title="#{bundle.ViewMunicipioTitle_idMUNICIPIO}"/>
-                        <h:outputText value="#{bundle.ViewMunicipioLabel_nombre}"/>
-                        <h:outputText value="#{municipioController.selected.nombre}" title="#{bundle.ViewMunicipioTitle_nombre}"/>
-                        <h:outputText value="#{bundle.ViewMunicipioLabel_ESTADOidESTADO}"/>
-                        <h:outputText value="#{municipioController.selected.ESTADOidESTADO}" title="#{bundle.ViewMunicipioTitle_ESTADOidESTADO}"/>
-                        <h:outputText value="#{bundle.ViewMunicipioLabel_SECCIONALidSECCIONAL}"/>
-                        <h:outputText value="#{municipioController.selected.SECCIONALidSECCIONAL}" title="#{bundle.ViewMunicipioTitle_SECCIONALidSECCIONAL}"/>
+                    <p:panelGrid columns="2" rendered="#{municipioController.selected != null}" style="margin-bottom:10px">
+                        <h:outputText value="#{bundle.Label_id}"/>
+                        <h:outputText value="#{municipioController.selected.idMUNICIPIO}" />
+                        <h:outputText value="#{bundle.Label_nombre}"/>
+                        <h:outputText value="#{municipioController.selected.nombre}" />
+                        <h:outputText value="#{bundle.Estado}"/>
+                        <h:outputText value="#{municipioController.selected.ESTADOidESTADO.nombre}"/>
+                        <h:outputText value="#{bundle.Seccional}"/>
+                        <h:outputText value="#{municipioController.selected.SECCIONALidSECCIONAL.nombre}" />
                     </p:panelGrid>
-                    <p:commandButton value="#{bundle.Close}" onclick="MunicipioViewDialog.hide()"/>
+                    <div id="botones" align="Center">
+                        <p:commandButton value="#{bundle.Close}" onclick="MunicipioViewDialog.hide()"/>
+                    </div> 
                 </h:panelGroup>
             </h:form>
         </p:dialog>

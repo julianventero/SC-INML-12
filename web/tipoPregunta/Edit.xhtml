@@ -11,14 +11,14 @@
         <p:dialog id="TipoPreguntaEditDlg" widgetVar="TipoPreguntaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTipoPreguntaTitle}">
             <h:form id="TipoPreguntaEditForm">
                 <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{tipoPreguntaController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditTipoPreguntaLabel_idTIPOPREGUNTA}" for="idTIPOPREGUNTA" />
-                        <p:inputText id="idTIPOPREGUNTA" value="#{tipoPreguntaController.selected.idTIPOPREGUNTA}" title="#{bundle.EditTipoPreguntaTitle_idTIPOPREGUNTA}" required="true" requiredMessage="#{bundle.EditTipoPreguntaRequiredMessage_idTIPOPREGUNTA}"/>
-                        <p:outputLabel value="#{bundle.EditTipoPreguntaLabel_nombre}" for="nombre" />
-                        <p:inputText id="nombre" value="#{tipoPreguntaController.selected.nombre}" title="#{bundle.EditTipoPreguntaTitle_nombre}" />
+                    <p:panelGrid columns="2" rendered="#{tipoPreguntaController.selected != null}" style="margin-bottom:10px">
+                        <p:outputLabel value="#{bundle.Label_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{tipoPreguntaController.selected.nombre}" />
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{tipoPreguntaController.update}" value="#{bundle.Save}" update="display,:TipoPreguntaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TipoPreguntaEditDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="TipoPreguntaEditDialog.hide()"/>
+                    <div id="botones" align="Center">
+                        <p:commandButton actionListener="#{tipoPreguntaController.update}" value="#{bundle.Save}" update="display,:TipoPreguntaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TipoPreguntaEditDialog');" onclick="TipoPreguntaEditDialog.hide()"/>
+                        <p:commandButton value="#{bundle.Cancel}" onclick="TipoPreguntaEditDialog.hide()"/>
+                    </div>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

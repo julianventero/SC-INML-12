@@ -11,21 +11,20 @@
         <p:dialog id="ParametrosMedicionEditDlg" widgetVar="ParametrosMedicionEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditParametrosMedicionTitle}">
             <h:form id="ParametrosMedicionEditForm">
                 <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{parametrosMedicionController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditParametrosMedicionLabel_idPARAMETROSMEDICION}" for="idPARAMETROSMEDICION" />
-                        <p:inputText id="idPARAMETROSMEDICION" value="#{parametrosMedicionController.selected.idPARAMETROSMEDICION}" title="#{bundle.EditParametrosMedicionTitle_idPARAMETROSMEDICION}" required="true" requiredMessage="#{bundle.EditParametrosMedicionRequiredMessage_idPARAMETROSMEDICION}"/>
-                        <p:outputLabel value="#{bundle.EditParametrosMedicionLabel_nombre}" for="nombre" />
-                        <p:inputText id="nombre" value="#{parametrosMedicionController.selected.nombre}" title="#{bundle.EditParametrosMedicionTitle_nombre}" />
-                        <p:outputLabel value="#{bundle.EditParametrosMedicionLabel_ESTADOidESTADO}" for="ESTADOidESTADO" />
-                        <p:selectOneMenu id="ESTADOidESTADO" value="#{parametrosMedicionController.selected.ESTADOidESTADO}" required="true" requiredMessage="#{bundle.EditParametrosMedicionRequiredMessage_ESTADOidESTADO}">
-                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                    <p:panelGrid columns="2" rendered="#{parametrosMedicionController.selected != null}" style="margin-bottom:10px">
+                        <p:outputLabel value="#{bundle.Label_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{parametrosMedicionController.selected.nombre}" />
+                        <p:outputLabel value="#{bundle.Estado}" for="ESTADOidESTADO" />
+                        <p:selectOneMenu id="ESTADOidESTADO" value="#{parametrosMedicionController.selected.ESTADOidESTADO}" >
                             <f:selectItems value="#{estadoController.itemsAvailableSelectOne}"
                                            var="ESTADOidESTADOItem"
                                            itemValue="#{ESTADOidESTADOItem}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{parametrosMedicionController.update}" value="#{bundle.Save}" update="display,:ParametrosMedicionListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ParametrosMedicionEditDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="ParametrosMedicionEditDialog.hide()"/>
+                    <div id="botones" align="Center">
+                        <p:commandButton actionListener="#{parametrosMedicionController.update}" value="#{bundle.Save}" update="display,:ParametrosMedicionListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ParametrosMedicionEditDialog');" onclick="ParametrosMedicionEditDialog.hide()"/>
+                        <p:commandButton value="#{bundle.Cancel}" onclick="ParametrosMedicionEditDialog.hide()"/>
+                    </div>  
                 </h:panelGroup>
             </h:form>
         </p:dialog>

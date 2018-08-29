@@ -11,13 +11,15 @@
         <p:dialog id="TipoPreguntaViewDlg" widgetVar="TipoPreguntaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewTipoPreguntaTitle}">
             <h:form id="TipoPreguntaViewForm">
                 <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{tipoPreguntaController.selected != null}">
-                        <h:outputText value="#{bundle.ViewTipoPreguntaLabel_idTIPOPREGUNTA}"/>
-                        <h:outputText value="#{tipoPreguntaController.selected.idTIPOPREGUNTA}" title="#{bundle.ViewTipoPreguntaTitle_idTIPOPREGUNTA}"/>
-                        <h:outputText value="#{bundle.ViewTipoPreguntaLabel_nombre}"/>
-                        <h:outputText value="#{tipoPreguntaController.selected.nombre}" title="#{bundle.ViewTipoPreguntaTitle_nombre}"/>
+                    <p:panelGrid columns="2" rendered="#{tipoPreguntaController.selected != null}" style="margin-bottom:10px">
+                        <h:outputText value="#{bundle.Label_id}"/>
+                        <h:outputText value="#{tipoPreguntaController.selected.idTIPOPREGUNTA}"/>
+                        <h:outputText value="#{bundle.Label_nombre}"/>
+                        <h:outputText value="#{tipoPreguntaController.selected.nombre}"/>
                     </p:panelGrid>
-                    <p:commandButton value="#{bundle.Close}" onclick="TipoPreguntaViewDialog.hide()"/>
+                    <div id="botones" align="Center">
+                        <p:commandButton value="#{bundle.Close}" onclick="TipoPreguntaViewDialog.hide()"/>
+                    </div>
                 </h:panelGroup>
             </h:form>
         </p:dialog>
