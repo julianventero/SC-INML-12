@@ -11,29 +11,31 @@
         <p:dialog id="RolViewDlg" widgetVar="RolViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewRolTitle}">
             <h:form id="RolViewForm">
                 <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{rolController.selected != null}">
-                        <h:outputText value="#{bundle.ViewRolLabel_idROL}"/>
-                        <h:outputText value="#{rolController.selected.idROL}" title="#{bundle.ViewRolTitle_idROL}"/>
-                        <h:outputText value="#{bundle.ViewRolLabel_nombre}"/>
-                        <h:outputText value="#{rolController.selected.nombre}" title="#{bundle.ViewRolTitle_nombre}"/>
-                        <h:outputText value="#{bundle.ViewRolLabel_permiso1}"/>
+                    <p:panelGrid columns="2" rendered="#{rolController.selected != null}" style="margin-bottom:10px">
+                        <h:outputText value="#{bundle.Label_id}"/>
+                        <h:outputText value="#{rolController.selected.idROL}" />
+                        <h:outputText value="#{bundle.Label_nombre}"/>
+                        <h:outputText value="#{rolController.selected.nombre}"/>
+                        <h:outputText value="#{bundle.Estado}"/>
+                        <h:outputText value="#{rolController.selected.ESTADOidESTADO.nombre}"/>
+                        <h:outputText value="#{bundle.Label_permiso1}"/>
                         <h:outputText value="#{rolController.selected.permiso1}" title="#{bundle.ViewRolTitle_permiso1}"/>
-                        <h:outputText value="#{bundle.ViewRolLabel_permiso2}"/>
+                        <h:outputText value="#{bundle.Label_permiso2}"/>
                         <h:outputText value="#{rolController.selected.permiso2}" title="#{bundle.ViewRolTitle_permiso2}"/>
-                        <h:outputText value="#{bundle.ViewRolLabel_permiso3}"/>
+                        <h:outputText value="#{bundle.Label_permiso3}"/>
                         <h:outputText value="#{rolController.selected.permiso3}" title="#{bundle.ViewRolTitle_permiso3}"/>
-                        <h:outputText value="#{bundle.ViewRolLabel_permiso4}"/>
+                        <h:outputText value="#{bundle.Label_permiso4}"/>
                         <h:outputText value="#{rolController.selected.permiso4}" title="#{bundle.ViewRolTitle_permiso4}"/>
-                        <h:outputText value="#{bundle.ViewRolLabel_permiso5}"/>
+                        <h:outputText value="#{bundle.Label_permiso5}"/>
                         <h:outputText value="#{rolController.selected.permiso5}" title="#{bundle.ViewRolTitle_permiso5}"/>
-                        <h:outputText value="#{bundle.ViewRolLabel_permiso6}"/>
+                        <h:outputText value="#{bundle.Label_permiso6}"/>
                         <h:outputText value="#{rolController.selected.permiso6}" title="#{bundle.ViewRolTitle_permiso6}"/>
-                        <h:outputText value="#{bundle.ViewRolLabel_permiso7}"/>
+                        <h:outputText value="#{bundle.Label_permiso7}"/>
                         <h:outputText value="#{rolController.selected.permiso7}" title="#{bundle.ViewRolTitle_permiso7}"/>
-                        <h:outputText value="#{bundle.ViewRolLabel_ESTADOidESTADO}"/>
-                        <h:outputText value="#{rolController.selected.ESTADOidESTADO}" title="#{bundle.ViewRolTitle_ESTADOidESTADO}"/>
                     </p:panelGrid>
-                    <p:commandButton value="#{bundle.Close}" onclick="RolViewDialog.hide()"/>
+                    <div id="botones" align="Center">
+                        <p:commandButton value="#{bundle.Close}" onclick="RolViewDialog.hide()"/>
+                    </div> 
                 </h:panelGroup>
             </h:form>
         </p:dialog>

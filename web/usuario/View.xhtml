@@ -12,26 +12,28 @@
             <h:form id="UsuarioViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{usuarioController.selected != null}">
-                        <h:outputText value="#{bundle.ViewUsuarioLabel_cedula}"/>
-                        <h:outputText value="#{usuarioController.selected.cedula}" title="#{bundle.ViewUsuarioTitle_cedula}"/>
-                        <h:outputText value="#{bundle.ViewUsuarioLabel_nombre}"/>
-                        <h:outputText value="#{usuarioController.selected.nombre}" title="#{bundle.ViewUsuarioTitle_nombre}"/>
-                        <h:outputText value="#{bundle.ViewUsuarioLabel_apellido}"/>
-                        <h:outputText value="#{usuarioController.selected.apellido}" title="#{bundle.ViewUsuarioTitle_apellido}"/>
-                        <h:outputText value="#{bundle.ViewUsuarioLabel_contrasena}"/>
-                        <h:outputText value="#{usuarioController.selected.contrasena}" title="#{bundle.ViewUsuarioTitle_contrasena}"/>
-                        <h:outputText value="#{bundle.ViewUsuarioLabel_correo}"/>
-                        <h:outputText value="#{usuarioController.selected.correo}" title="#{bundle.ViewUsuarioTitle_correo}"/>
-                        <h:outputText value="#{bundle.ViewUsuarioLabel_ESTADOidESTADO}"/>
-                        <h:outputText value="#{usuarioController.selected.ESTADOidESTADO}" title="#{bundle.ViewUsuarioTitle_ESTADOidESTADO}"/>
-                        <h:outputText value="#{bundle.ViewUsuarioLabel_GRUPOidGRUPO}"/>
-                        <h:outputText value="#{usuarioController.selected.GRUPOidGRUPO}" title="#{bundle.ViewUsuarioTitle_GRUPOidGRUPO}"/>
-                        <h:outputText value="#{bundle.ViewUsuarioLabel_ROLidROL}"/>
-                        <h:outputText value="#{usuarioController.selected.ROLidROL}" title="#{bundle.ViewUsuarioTitle_ROLidROL}"/>
-                        <h:outputText value="#{bundle.ViewUsuarioLabel_SECCIONALidSECCIONAL}"/>
-                        <h:outputText value="#{usuarioController.selected.SECCIONALidSECCIONAL}" title="#{bundle.ViewUsuarioTitle_SECCIONALidSECCIONAL}"/>
+                        <h:outputText value="#{bundle.Label_cedula}"/>
+                        <h:outputText value="#{usuarioController.selected.cedula}" />
+                        <h:outputText value="#{bundle.Label_nombre}"/>
+                        <h:outputText value="#{usuarioController.selected.nombre}" />
+                        <h:outputText value="#{bundle.Label_apellido}"/>
+                        <h:outputText value="#{usuarioController.selected.apellido}" />
+                        <h:outputText value="#{bundle.Label_correo}"/>
+                        <h:outputText value="#{usuarioController.selected.correo}" />
+                        <h:outputText value="#{bundle.Label_contraseña}"/>
+                        <h:outputText value="#{usuarioController.selected.contrasena}" />
+                        <h:outputText value="#{bundle.Rol}"/>
+                        <h:outputText value="#{usuarioController.selected.ROLidROL.nombre}" />
+                        <h:outputText value="#{bundle.Estado}"/>
+                        <h:outputText value="#{usuarioController.selected.ESTADOidESTADO.nombre}" />
+                        <h:outputText value="#{bundle.Grupo}"/>
+                        <h:outputText value="#{usuarioController.selected.GRUPOidGRUPO.nombre}" />
+                        <h:outputText value="#{bundle.Seccional}"/>
+                        <h:outputText value="#{usuarioController.selected.SECCIONALidSECCIONAL.nombre}"/>
                     </p:panelGrid>
-                    <p:commandButton value="#{bundle.Close}" onclick="UsuarioViewDialog.hide()"/>
+                    <div id="botones" align="Center">
+                        <p:commandButton value="#{bundle.Close}" onclick="UsuarioViewDialog.hide()"/>
+                    </div>    
                 </h:panelGroup>
             </h:form>
         </p:dialog>

@@ -11,21 +11,21 @@
         <p:dialog id="GrupoEditDlg" widgetVar="GrupoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditGrupoTitle}">
             <h:form id="GrupoEditForm">
                 <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{grupoController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditGrupoLabel_idGRUPO}" for="idGRUPO" />
-                        <p:inputText id="idGRUPO" value="#{grupoController.selected.idGRUPO}" title="#{bundle.EditGrupoTitle_idGRUPO}" required="true" requiredMessage="#{bundle.EditGrupoRequiredMessage_idGRUPO}"/>
-                        <p:outputLabel value="#{bundle.EditGrupoLabel_nombre}" for="nombre" />
-                        <p:inputText id="nombre" value="#{grupoController.selected.nombre}" title="#{bundle.EditGrupoTitle_nombre}" required="true" requiredMessage="#{bundle.EditGrupoRequiredMessage_nombre}"/>
-                        <p:outputLabel value="#{bundle.EditGrupoLabel_ESTADOidESTADO}" for="ESTADOidESTADO" />
-                        <p:selectOneMenu id="ESTADOidESTADO" value="#{grupoController.selected.ESTADOidESTADO}" required="true" requiredMessage="#{bundle.EditGrupoRequiredMessage_ESTADOidESTADO}">
+                    <p:panelGrid columns="2" rendered="#{grupoController.selected != null}" style="margin-bottom:10px">
+                        <p:outputLabel value="#{bundle.Label_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{grupoController.selected.nombre}" />
+                        <p:outputLabel value="#{bundle.Estado}" for="ESTADOidESTADO" />
+                        <p:selectOneMenu id="ESTADOidESTADO" value="#{grupoController.selected.ESTADOidESTADO}" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{estadoController.itemsAvailableSelectOne}"
                                            var="ESTADOidESTADOItem"
                                            itemValue="#{ESTADOidESTADOItem}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{grupoController.update}" value="#{bundle.Save}" update="display,:GrupoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'GrupoEditDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="GrupoEditDialog.hide()"/>
+                    <div id="botones" align="Center">
+                        <p:commandButton actionListener="#{grupoController.update}" value="#{bundle.Save}" update="display,:GrupoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'GrupoEditDialog');" onclick="GrupoEditDialog.hide()"/>
+                        <p:commandButton value="#{bundle.Cancel}" onclick="GrupoEditDialog.hide()"/>
+                    </div>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

@@ -12,38 +12,38 @@
             <h:form id="UsuarioEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{usuarioController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditUsuarioLabel_cedula}" for="cedula" />
-                        <p:inputText id="cedula" value="#{usuarioController.selected.cedula}" title="#{bundle.EditUsuarioTitle_cedula}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_cedula}"/>
-                        <p:outputLabel value="#{bundle.EditUsuarioLabel_nombre}" for="nombre" />
-                        <p:inputText id="nombre" value="#{usuarioController.selected.nombre}" title="#{bundle.EditUsuarioTitle_nombre}" />
-                        <p:outputLabel value="#{bundle.EditUsuarioLabel_apellido}" for="apellido" />
-                        <p:inputText id="apellido" value="#{usuarioController.selected.apellido}" title="#{bundle.EditUsuarioTitle_apellido}" />
-                        <p:outputLabel value="#{bundle.EditUsuarioLabel_contrasena}" for="contrasena" />
-                        <p:inputText id="contrasena" value="#{usuarioController.selected.contrasena}" title="#{bundle.EditUsuarioTitle_contrasena}" />
-                        <p:outputLabel value="#{bundle.EditUsuarioLabel_correo}" for="correo" />
-                        <p:inputText id="correo" value="#{usuarioController.selected.correo}" title="#{bundle.EditUsuarioTitle_correo}" />
-                        <p:outputLabel value="#{bundle.EditUsuarioLabel_ESTADOidESTADO}" for="ESTADOidESTADO" />
-                        <p:selectOneMenu id="ESTADOidESTADO" value="#{usuarioController.selected.ESTADOidESTADO}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_ESTADOidESTADO}">
-                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{estadoController.itemsAvailableSelectOne}"
-                                           var="ESTADOidESTADOItem"
-                                           itemValue="#{ESTADOidESTADOItem}"/>
-                        </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.EditUsuarioLabel_GRUPOidGRUPO}" for="GRUPOidGRUPO" />
-                        <p:selectOneMenu id="GRUPOidGRUPO" value="#{usuarioController.selected.GRUPOidGRUPO}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_GRUPOidGRUPO}">
-                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{grupoController.itemsAvailableSelectOne}"
-                                           var="GRUPOidGRUPOItem"
-                                           itemValue="#{GRUPOidGRUPOItem}"/>
-                        </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.EditUsuarioLabel_ROLidROL}" for="ROLidROL" />
+                        <p:outputLabel value="#{bundle.Label_cedula}" for="cedula" />
+                        <p:inputText id="cedula" value="#{usuarioController.selected.cedula}" required="true"/>
+                        <p:outputLabel value="#{bundle.Label_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{usuarioController.selected.nombre}"  />
+                        <p:outputLabel value="#{bundle.Label_apellido}" for="apellido" />
+                        <p:inputText id="apellido" value="#{usuarioController.selected.apellido}" />
+                        <p:outputLabel value="#{bundle.Label_correo}" for="correo" />
+                        <p:inputText id="correo" value="#{usuarioController.selected.correo}" />
+                        <p:outputLabel value="#{bundle.Label_contraseña}" for="contrasena" />
+                        <p:password id="contrasena" value="#{usuarioController.selected.contrasena}" />
+                        <p:outputLabel value="#{bundle.Rol}" for="ROLidROL" />
                         <p:selectOneMenu id="ROLidROL" value="#{usuarioController.selected.ROLidROL}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_ROLidROL}">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{rolController.itemsAvailableSelectOne}"
                                            var="ROLidROLItem"
                                            itemValue="#{ROLidROLItem}"/>
                         </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.EditUsuarioLabel_SECCIONALidSECCIONAL}" for="SECCIONALidSECCIONAL" />
+                        <p:outputLabel value="#{bundle.Estado}" for="ESTADOidESTADO" />
+                        <p:selectOneMenu id="ESTADOidESTADO" value="#{usuarioController.selected.ESTADOidESTADO}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_ESTADOidESTADO}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{estadoController.itemsAvailableSelectOne}"
+                                           var="ESTADOidESTADOItem"
+                                           itemValue="#{ESTADOidESTADOItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.Grupo}" for="GRUPOidGRUPO" />
+                        <p:selectOneMenu id="GRUPOidGRUPO" value="#{usuarioController.selected.GRUPOidGRUPO}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_GRUPOidGRUPO}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{grupoController.itemsAvailableSelectOne}"
+                                           var="GRUPOidGRUPOItem"
+                                           itemValue="#{GRUPOidGRUPOItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.Seccional}" for="SECCIONALidSECCIONAL" />
                         <p:selectOneMenu id="SECCIONALidSECCIONAL" value="#{usuarioController.selected.SECCIONALidSECCIONAL}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_SECCIONALidSECCIONAL}">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{seccionalController.itemsAvailableSelectOne}"
@@ -51,8 +51,10 @@
                                            itemValue="#{SECCIONALidSECCIONALItem}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{usuarioController.update}" value="#{bundle.Save}" update="display,:UsuarioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'UsuarioEditDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="UsuarioEditDialog.hide()"/>
+                    <div id="botones" align="Center">
+                        <p:commandButton actionListener="#{usuarioController.update}" value="#{bundle.Save}" update="display,:UsuarioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'UsuarioEditDialog');"/>
+                        <p:commandButton value="#{bundle.Cancel}" onclick="UsuarioEditDialog.hide()"/>
+                    </div>    
                 </h:panelGroup>
             </h:form>
         </p:dialog>

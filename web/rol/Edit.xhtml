@@ -11,35 +11,35 @@
         <p:dialog id="RolEditDlg" widgetVar="RolEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditRolTitle}">
             <h:form id="RolEditForm">
                 <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{rolController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditRolLabel_idROL}" for="idROL" />
-                        <p:inputText id="idROL" value="#{rolController.selected.idROL}" title="#{bundle.EditRolTitle_idROL}" required="true" requiredMessage="#{bundle.EditRolRequiredMessage_idROL}"/>
-                        <p:outputLabel value="#{bundle.EditRolLabel_nombre}" for="nombre" />
-                        <p:inputText id="nombre" value="#{rolController.selected.nombre}" title="#{bundle.EditRolTitle_nombre}" />
-                        <p:outputLabel value="#{bundle.EditRolLabel_permiso1}" for="permiso1" />
-                        <p:inputText id="permiso1" value="#{rolController.selected.permiso1}" title="#{bundle.EditRolTitle_permiso1}" />
-                        <p:outputLabel value="#{bundle.EditRolLabel_permiso2}" for="permiso2" />
-                        <p:inputText id="permiso2" value="#{rolController.selected.permiso2}" title="#{bundle.EditRolTitle_permiso2}" />
-                        <p:outputLabel value="#{bundle.EditRolLabel_permiso3}" for="permiso3" />
-                        <p:inputText id="permiso3" value="#{rolController.selected.permiso3}" title="#{bundle.EditRolTitle_permiso3}" />
-                        <p:outputLabel value="#{bundle.EditRolLabel_permiso4}" for="permiso4" />
-                        <p:inputText id="permiso4" value="#{rolController.selected.permiso4}" title="#{bundle.EditRolTitle_permiso4}" />
-                        <p:outputLabel value="#{bundle.EditRolLabel_permiso5}" for="permiso5" />
-                        <p:inputText id="permiso5" value="#{rolController.selected.permiso5}" title="#{bundle.EditRolTitle_permiso5}" />
-                        <p:outputLabel value="#{bundle.EditRolLabel_permiso6}" for="permiso6" />
-                        <p:inputText id="permiso6" value="#{rolController.selected.permiso6}" title="#{bundle.EditRolTitle_permiso6}" />
-                        <p:outputLabel value="#{bundle.EditRolLabel_permiso7}" for="permiso7" />
-                        <p:inputText id="permiso7" value="#{rolController.selected.permiso7}" title="#{bundle.EditRolTitle_permiso7}" />
-                        <p:outputLabel value="#{bundle.EditRolLabel_ESTADOidESTADO}" for="ESTADOidESTADO" />
-                        <p:selectOneMenu id="ESTADOidESTADO" value="#{rolController.selected.ESTADOidESTADO}" required="true" requiredMessage="#{bundle.EditRolRequiredMessage_ESTADOidESTADO}">
+                    <p:panelGrid columns="2" rendered="#{rolController.selected != null}" style="margin-bottom:10px">
+                        <p:outputLabel value="#{bundle.Label_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{rolController.selected.nombre}" />
+                        <p:outputLabel value="#{bundle.Estado}" for="ESTADOidESTADO" />
+                        <p:selectOneMenu id="ESTADOidESTADO" value="#{rolController.selected.ESTADOidESTADO}" required="true">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{estadoController.itemsAvailableSelectOne}"
                                            var="ESTADOidESTADOItem"
                                            itemValue="#{ESTADOidESTADOItem}"/>
                         </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.Label_permiso1}" for="permiso1" />
+                        <p:inputText id="permiso1" value="#{rolController.selected.permiso1}" />
+                        <p:outputLabel value="#{bundle.Label_permiso2}" for="permiso2" />
+                        <p:inputText id="permiso2" value="#{rolController.selected.permiso2}" />
+                        <p:outputLabel value="#{bundle.Label_permiso3}" for="permiso3" />
+                        <p:inputText id="permiso3" value="#{rolController.selected.permiso3}" />
+                        <p:outputLabel value="#{bundle.Label_permiso4}" for="permiso4" />
+                        <p:inputText id="permiso4" value="#{rolController.selected.permiso4}" />
+                        <p:outputLabel value="#{bundle.Label_permiso5}" for="permiso5" />
+                        <p:inputText id="permiso5" value="#{rolController.selected.permiso5}" />
+                        <p:outputLabel value="#{bundle.Label_permiso6}" for="permiso6" />
+                        <p:inputText id="permiso6" value="#{rolController.selected.permiso6}" />
+                        <p:outputLabel value="#{bundle.Label_permiso7}" for="permiso7" />
+                        <p:inputText id="permiso7" value="#{rolController.selected.permiso7}" />
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{rolController.update}" value="#{bundle.Save}" update="display,:RolListForm:datalist,:growl" oncomplete="handleSubmit(args, 'RolEditDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="RolEditDialog.hide()"/>
+                    <div id="botones" align="Center">
+                        <p:commandButton actionListener="#{rolController.update}" value="#{bundle.Save}" update="display,:RolListForm:datalist,:growl" oncomplete="handleSubmit(args, 'RolEditDialog');" onclick="RolEditDialog.hide()"/>
+                        <p:commandButton value="#{bundle.Cancel}" onclick="RolEditDialog.hide()"/>
+                    </div>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

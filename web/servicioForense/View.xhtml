@@ -11,17 +11,19 @@
         <p:dialog id="ServicioForenseViewDlg" widgetVar="ServicioForenseViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewServicioForenseTitle}">
             <h:form id="ServicioForenseViewForm">
                 <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{servicioForenseController.selected != null}">
-                        <h:outputText value="#{bundle.ViewServicioForenseLabel_idSERVICIOFORENSE}"/>
-                        <h:outputText value="#{servicioForenseController.selected.idSERVICIOFORENSE}" title="#{bundle.ViewServicioForenseTitle_idSERVICIOFORENSE}"/>
-                        <h:outputText value="#{bundle.ViewServicioForenseLabel_nombre}"/>
-                        <h:outputText value="#{servicioForenseController.selected.nombre}" title="#{bundle.ViewServicioForenseTitle_nombre}"/>
-                        <h:outputText value="#{bundle.ViewServicioForenseLabel_ESTADOidESTADO}"/>
-                        <h:outputText value="#{servicioForenseController.selected.ESTADOidESTADO}" title="#{bundle.ViewServicioForenseTitle_ESTADOidESTADO}"/>
-                        <h:outputText value="#{bundle.ViewServicioForenseLabel_GRUPOidGRUPO}"/>
-                        <h:outputText value="#{servicioForenseController.selected.GRUPOidGRUPO}" title="#{bundle.ViewServicioForenseTitle_GRUPOidGRUPO}"/>
+                    <p:panelGrid columns="2" rendered="#{servicioForenseController.selected != null}" style="margin-bottom:10px">
+                        <h:outputText value="#{bundle.Label_id}"/>
+                        <h:outputText value="#{servicioForenseController.selected.idSERVICIOFORENSE}"/>
+                        <h:outputText value="#{bundle.Label_nombre}"/>
+                        <h:outputText value="#{servicioForenseController.selected.nombre}"/>
+                        <h:outputText value="#{bundle.Estado}"/>
+                        <h:outputText value="#{servicioForenseController.selected.ESTADOidESTADO.nombre}"/>
+                        <h:outputText value="#{bundle.Grupo}"/>
+                        <h:outputText value="#{servicioForenseController.selected.GRUPOidGRUPO.nombre}"/>
                     </p:panelGrid>
-                    <p:commandButton value="#{bundle.Close}" onclick="ServicioForenseViewDialog.hide()"/>
+                    <div id="botones" align="Center">
+                        <p:commandButton value="#{bundle.Close}" onclick="ServicioForenseViewDialog.hide()"/>
+                    </div> 
                 </h:panelGroup>
             </h:form>
         </p:dialog>

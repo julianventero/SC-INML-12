@@ -11,14 +11,14 @@
         <p:dialog id="EstadoCreateDlg" widgetVar="EstadoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateEstadoTitle}">
             <h:form id="EstadoCreateForm">
                 <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{estadoController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateEstadoLabel_idESTADO}" for="idESTADO" />
-                        <p:inputText id="idESTADO" value="#{estadoController.selected.idESTADO}" title="#{bundle.CreateEstadoTitle_idESTADO}" required="true" requiredMessage="#{bundle.CreateEstadoRequiredMessage_idESTADO}"/>
-                        <p:outputLabel value="#{bundle.CreateEstadoLabel_nombre}" for="nombre" />
-                        <p:inputText id="nombre" value="#{estadoController.selected.nombre}" title="#{bundle.CreateEstadoTitle_nombre}" />
+                    <p:panelGrid columns="2" rendered="#{estadoController.selected != null}" style="margin-bottom:10px">
+                       <p:outputLabel value="#{bundle.Label_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{estadoController.selected.nombre}" />
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{estadoController.create}" value="#{bundle.Save}" update="display,:EstadoListForm:datalist,:growl" oncomplete="handleSubmit(args,'EstadoCreateDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="EstadoCreateDialog.hide()"/>
+                    <div id="botones" align="Center">
+                        <p:commandButton actionListener="#{estadoController.create}" value="#{bundle.Save}" update="display,:EstadoListForm:datalist,:growl" oncomplete="handleSubmit(args,'EstadoCreateDialog');" onclick="EstadoCreateDialog.hide()"/>
+                        <p:commandButton value="#{bundle.Cancel}" onclick="EstadoCreateDialog.hide()"/>
+                    </div>    
                 </h:panelGroup>
             </h:form>
         </p:dialog>

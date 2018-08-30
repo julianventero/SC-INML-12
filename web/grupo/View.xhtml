@@ -11,15 +11,17 @@
         <p:dialog id="GrupoViewDlg" widgetVar="GrupoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewGrupoTitle}">
             <h:form id="GrupoViewForm">
                 <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{grupoController.selected != null}">
-                        <h:outputText value="#{bundle.ViewGrupoLabel_idGRUPO}"/>
-                        <h:outputText value="#{grupoController.selected.idGRUPO}" title="#{bundle.ViewGrupoTitle_idGRUPO}"/>
-                        <h:outputText value="#{bundle.ViewGrupoLabel_nombre}"/>
-                        <h:outputText value="#{grupoController.selected.nombre}" title="#{bundle.ViewGrupoTitle_nombre}"/>
-                        <h:outputText value="#{bundle.ViewGrupoLabel_ESTADOidESTADO}"/>
-                        <h:outputText value="#{grupoController.selected.ESTADOidESTADO}" title="#{bundle.ViewGrupoTitle_ESTADOidESTADO}"/>
+                    <p:panelGrid columns="2" rendered="#{grupoController.selected != null}" style="margin-bottom:10px">
+                        <h:outputText value="#{bundle.Label_id}"/>
+                        <h:outputText value="#{grupoController.selected.idGRUPO}"/>
+                        <h:outputText value="#{bundle.Label_nombre}"/>
+                        <h:outputText value="#{grupoController.selected.nombre}"/>
+                        <h:outputText value="#{bundle.Estado}"/>
+                        <h:outputText value="#{grupoController.selected.ESTADOidESTADO.nombre}"/>
                     </p:panelGrid>
-                    <p:commandButton value="#{bundle.Close}" onclick="GrupoViewDialog.hide()"/>
+                    <div id="botones" align="Center">
+                        <p:commandButton value="#{bundle.Close}" onclick="GrupoViewDialog.hide()"/>
+                    </div>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

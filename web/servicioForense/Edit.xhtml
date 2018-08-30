@@ -11,28 +11,28 @@
         <p:dialog id="ServicioForenseEditDlg" widgetVar="ServicioForenseEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditServicioForenseTitle}">
             <h:form id="ServicioForenseEditForm">
                 <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{servicioForenseController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditServicioForenseLabel_idSERVICIOFORENSE}" for="idSERVICIOFORENSE" />
-                        <p:inputText id="idSERVICIOFORENSE" value="#{servicioForenseController.selected.idSERVICIOFORENSE}" title="#{bundle.EditServicioForenseTitle_idSERVICIOFORENSE}" required="true" requiredMessage="#{bundle.EditServicioForenseRequiredMessage_idSERVICIOFORENSE}"/>
-                        <p:outputLabel value="#{bundle.EditServicioForenseLabel_nombre}" for="nombre" />
-                        <p:inputText id="nombre" value="#{servicioForenseController.selected.nombre}" title="#{bundle.EditServicioForenseTitle_nombre}" />
-                        <p:outputLabel value="#{bundle.EditServicioForenseLabel_ESTADOidESTADO}" for="ESTADOidESTADO" />
+                    <p:panelGrid columns="2" rendered="#{servicioForenseController.selected != null}" style="margin-bottom:10px">
+                        <p:outputLabel value="#{bundle.Servicio_Forense}" for="nombre" />
+                        <p:inputText id="nombre" value="#{servicioForenseController.selected.nombre}"/>
+                        <p:outputLabel value="#{bundle.Estado}" for="ESTADOidESTADO" />
                         <p:selectOneMenu id="ESTADOidESTADO" value="#{servicioForenseController.selected.ESTADOidESTADO}" required="true" requiredMessage="#{bundle.EditServicioForenseRequiredMessage_ESTADOidESTADO}">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{estadoController.itemsAvailableSelectOne}"
                                            var="ESTADOidESTADOItem"
                                            itemValue="#{ESTADOidESTADOItem}"/>
                         </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.EditServicioForenseLabel_GRUPOidGRUPO}" for="GRUPOidGRUPO" />
-                        <p:selectOneMenu id="GRUPOidGRUPO" value="#{servicioForenseController.selected.GRUPOidGRUPO}" required="true" requiredMessage="#{bundle.EditServicioForenseRequiredMessage_GRUPOidGRUPO}">
+                        <p:outputLabel value="#{bundle.Grupo}" for="GRUPOidGRUPO" />
+                        <p:selectOneMenu id="GRUPOidGRUPO" value="#{servicioForenseController.selected.GRUPOidGRUPO}" required="true">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{grupoController.itemsAvailableSelectOne}"
                                            var="GRUPOidGRUPOItem"
                                            itemValue="#{GRUPOidGRUPOItem}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{servicioForenseController.update}" value="#{bundle.Save}" update="display,:ServicioForenseListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ServicioForenseEditDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="ServicioForenseEditDialog.hide()"/>
+                    <div id="botones" align="Center">
+                        <p:commandButton actionListener="#{servicioForenseController.update}" value="#{bundle.Save}" update="display,:ServicioForenseListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ServicioForenseEditDialog');"/>
+                        <p:commandButton value="#{bundle.Cancel}" onclick="ServicioForenseEditDialog.hide()"/>
+                    </div>    
                 </h:panelGroup>
             </h:form>
         </p:dialog>
