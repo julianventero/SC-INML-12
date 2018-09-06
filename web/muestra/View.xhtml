@@ -11,19 +11,22 @@
         <p:dialog id="MuestraViewDlg" widgetVar="MuestraViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewMuestraTitle}">
             <h:form id="MuestraViewForm">
                 <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{muestraController.selected != null}">
-                        <h:outputText value="#{bundle.ViewMuestraLabel_idMUESTRA}"/>
-                        <h:outputText value="#{muestraController.selected.idMUESTRA}" title="#{bundle.ViewMuestraTitle_idMUESTRA}"/>
-                        <h:outputText value="#{bundle.ViewMuestraLabel_planeada}"/>
-                        <h:outputText value="#{muestraController.selected.planeada}" title="#{bundle.ViewMuestraTitle_planeada}"/>
-                        <h:outputText value="#{bundle.ViewMuestraLabel_fechaMuestra}"/>
-                        <h:outputText value="#{muestraController.selected.fechaMuestra}" title="#{bundle.ViewMuestraTitle_fechaMuestra}">
+                    <p:panelGrid columns="2" rendered="#{muestraController.selected != null}" style="margin-bottom:10px">
+                        <h:outputText value="#{bundle.Label_id}"/>
+                        <h:outputText value="#{muestraController.selected.idMUESTRA}"/>
+                        <h:outputText value="#{bundle.Muestra_planeada}"/>
+                        <h:outputText value="#{muestraController.selected.planeada}" />
+                        <h:outputText value="#{bundle.fechaMuestra}"/>
+                        <h:outputText value="#{muestraController.selected.fechaMuestra}">
                             <f:convertDateTime pattern="MM/dd/yyyy" />
                         </h:outputText>
-                        <h:outputText value="#{bundle.ViewMuestraLabel_ENCUESTAidENCUESTA}"/>
-                        <h:outputText value="#{muestraController.selected.ENCUESTAidENCUESTA}" title="#{bundle.ViewMuestraTitle_ENCUESTAidENCUESTA}"/>
+                        <h:outputText value="#{bundle.Encuestas}"/>
+                        <h:outputText value="#{muestraController.selected.ENCUESTAidENCUESTA.nombre}"/>
+                        
                     </p:panelGrid>
-                    <p:commandButton value="#{bundle.Close}" onclick="MuestraViewDialog.hide()"/>
+                    <div id="botones" align="Center">
+                        <p:commandButton value="#{bundle.Close}" onclick="MuestraViewDialog.hide()"/>
+                    </div>    
                 </h:panelGroup>
             </h:form>
         </p:dialog>

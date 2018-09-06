@@ -11,22 +11,22 @@
         <p:dialog id="MuestraCreateDlg" widgetVar="MuestraCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateMuestraTitle}">
             <h:form id="MuestraCreateForm">
                 <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{muestraController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateMuestraLabel_idMUESTRA}" for="idMUESTRA" />
-                        <p:inputText id="idMUESTRA" value="#{muestraController.selected.idMUESTRA}" title="#{bundle.CreateMuestraTitle_idMUESTRA}" required="true" requiredMessage="#{bundle.CreateMuestraRequiredMessage_idMUESTRA}"/>
-                        <p:outputLabel value="#{bundle.CreateMuestraLabel_planeada}" for="planeada" />
-                        <p:inputText id="planeada" value="#{muestraController.selected.planeada}" title="#{bundle.CreateMuestraTitle_planeada}" />
-                        <p:outputLabel value="#{bundle.CreateMuestraLabel_fechaMuestra}" for="fechaMuestra" />
-                        <p:calendar id="fechaMuestra" pattern="MM/dd/yyyy" value="#{muestraController.selected.fechaMuestra}" title="#{bundle.EditMuestraTitle_fechaMuestra}"  showOn="button"/>
-                        <p:outputLabel value="#{bundle.CreateMuestraLabel_ENCUESTAidENCUESTA}" for="ENCUESTAidENCUESTA" />
-                        <p:selectOneMenu id="ENCUESTAidENCUESTA" value="#{muestraController.selected.ENCUESTAidENCUESTA}" required="true" requiredMessage="#{bundle.EditMuestraRequiredMessage_ENCUESTAidENCUESTA}">
+                    <p:panelGrid columns="2" rendered="#{muestraController.selected != null}" style="margin-bottom:10px">
+                        <p:outputLabel value="#{bundle.Muestra_planeada}" for="planeada" />
+                        <p:inputText id="planeada" value="#{muestraController.selected.planeada}" />
+                        <p:outputLabel value="#{bundle.fechaMuestra}" for="fechaMuestra" />
+                        <p:calendar id="fechaMuestra" pattern="MM/dd/yyyy" value="#{muestraController.selected.fechaMuestra}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.Encuestas}" for="ENCUESTAidENCUESTA" />
+                        <p:selectOneMenu id="ENCUESTAidENCUESTA" value="#{muestraController.selected.ENCUESTAidENCUESTA}" required="true">
                             <f:selectItems value="#{encuestaController.itemsAvailableSelectOne}"
                                            var="ENCUESTAidENCUESTAItem"
                                            itemValue="#{ENCUESTAidENCUESTAItem}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{muestraController.create}" value="#{bundle.Save}" update="display,:MuestraListForm:datalist,:growl" oncomplete="handleSubmit(args,'MuestraCreateDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="MuestraCreateDialog.hide()"/>
+                    <div id="botones" align="Center">
+                        <p:commandButton actionListener="#{muestraController.create}" value="#{bundle.Save}" update="display,:MuestraListForm:datalist,:growl" oncomplete="handleSubmit(args,'MuestraCreateDialog');" onclick="MuestraCreateDialog.hide()"/>
+                        <p:commandButton value="#{bundle.Cancel}" onclick="MuestraCreateDialog.hide()"/>
+                    </div>    
                 </h:panelGroup>
             </h:form>
         </p:dialog>
