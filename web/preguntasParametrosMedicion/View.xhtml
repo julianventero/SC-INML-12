@@ -11,15 +11,17 @@
         <p:dialog id="PreguntasParametrosMedicionViewDlg" widgetVar="PreguntasParametrosMedicionViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewPreguntasParametrosMedicionTitle}">
             <h:form id="PreguntasParametrosMedicionViewForm">
                 <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{preguntasParametrosMedicionController.selected != null}">
-                        <h:outputText value="#{bundle.ViewPreguntasParametrosMedicionLabel_idPREGUNTASPARAMETROSMEDICION}"/>
-                        <h:outputText value="#{preguntasParametrosMedicionController.selected.idPREGUNTASPARAMETROSMEDICION}" title="#{bundle.ViewPreguntasParametrosMedicionTitle_idPREGUNTASPARAMETROSMEDICION}"/>
-                        <h:outputText value="#{bundle.ViewPreguntasParametrosMedicionLabel_PARAMETROSMEDICIONidPARAMETROSMEDICION}"/>
-                        <h:outputText value="#{preguntasParametrosMedicionController.selected.PARAMETROSMEDICIONidPARAMETROSMEDICION}" title="#{bundle.ViewPreguntasParametrosMedicionTitle_PARAMETROSMEDICIONidPARAMETROSMEDICION}"/>
-                        <h:outputText value="#{bundle.ViewPreguntasParametrosMedicionLabel_PREGUNTASidPREGUNTAS}"/>
-                        <h:outputText value="#{preguntasParametrosMedicionController.selected.PREGUNTASidPREGUNTAS}" title="#{bundle.ViewPreguntasParametrosMedicionTitle_PREGUNTASidPREGUNTAS}"/>
+                    <p:panelGrid columns="2" rendered="#{preguntasParametrosMedicionController.selected != null}" style="margin-bottom:10px">
+                        <h:outputText value="#{bundle.Label_id}"/>
+                        <h:outputText value="#{preguntasParametrosMedicionController.selected.idPREGUNTASPARAMETROSMEDICION}" />
+                        <h:outputText value="#{bundle.Preguntas}"/>
+                        <h:outputText value="#{preguntasParametrosMedicionController.selected.PREGUNTASidPREGUNTAS.pregunta}"/>
+                        <h:outputText value="#{bundle.Parametros_Medicion}"/>
+                        <h:outputText value="#{preguntasParametrosMedicionController.selected.PARAMETROSMEDICIONidPARAMETROSMEDICION.nombre}" />
                     </p:panelGrid>
-                    <p:commandButton value="#{bundle.Close}" onclick="PreguntasParametrosMedicionViewDialog.hide()"/>
+                    <div id="botones" align="Center">
+                        <p:commandButton value="#{bundle.Close}" onclick="PreguntasParametrosMedicionViewDialog.hide()"/>
+                    </div>    
                 </h:panelGroup>
             </h:form>
         </p:dialog>

@@ -5,6 +5,7 @@
  */
 package fachada;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -28,5 +29,5 @@ public class PreguntasParametrosMedicionFacade extends AbstractFacade<PreguntasP
     public PreguntasParametrosMedicionFacade() {
         super(PreguntasParametrosMedicion.class);
     }
-    
+   
 }

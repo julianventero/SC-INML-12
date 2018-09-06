@@ -11,15 +11,17 @@
         <p:dialog id="EncuestaPreguntasViewDlg" widgetVar="EncuestaPreguntasViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEncuestaPreguntasTitle}">
             <h:form id="EncuestaPreguntasViewForm">
                 <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{encuestaPreguntasController.selected != null}">
-                        <h:outputText value="#{bundle.ViewEncuestaPreguntasLabel_idENCUESTAPREGUNTAS}"/>
-                        <h:outputText value="#{encuestaPreguntasController.selected.idENCUESTAPREGUNTAS}" title="#{bundle.ViewEncuestaPreguntasTitle_idENCUESTAPREGUNTAS}"/>
-                        <h:outputText value="#{bundle.ViewEncuestaPreguntasLabel_ENCUESTAidENCUESTA}"/>
-                        <h:outputText value="#{encuestaPreguntasController.selected.ENCUESTAidENCUESTA}" title="#{bundle.ViewEncuestaPreguntasTitle_ENCUESTAidENCUESTA}"/>
-                        <h:outputText value="#{bundle.ViewEncuestaPreguntasLabel_PREGUNTASidPREGUNTAS}"/>
-                        <h:outputText value="#{encuestaPreguntasController.selected.PREGUNTASidPREGUNTAS}" title="#{bundle.ViewEncuestaPreguntasTitle_PREGUNTASidPREGUNTAS}"/>
+                    <p:panelGrid columns="2" rendered="#{encuestaPreguntasController.selected != null}" style="margin-bottom:10px">
+                        <h:outputText value="#{bundle.Label_id}"/>
+                        <h:outputText value="#{encuestaPreguntasController.selected.idENCUESTAPREGUNTAS}"/>
+                        <h:outputText value="#{bundle.Encuestas}"/>
+                        <h:outputText value="#{encuestaPreguntasController.selected.ENCUESTAidENCUESTA.nombre}"/>
+                        <h:outputText value="#{bundle.Preguntas}"/>
+                        <h:outputText value="#{encuestaPreguntasController.selected.PREGUNTASidPREGUNTAS.pregunta}"/>
                     </p:panelGrid>
-                    <p:commandButton value="#{bundle.Close}" onclick="EncuestaPreguntasViewDialog.hide()"/>
+                    <div id="botones" align="Center">
+                        <p:commandButton value="#{bundle.Close}" onclick="EncuestaPreguntasViewDialog.hide()"/>
+                    </div>    
                 </h:panelGroup>
             </h:form>
         </p:dialog>

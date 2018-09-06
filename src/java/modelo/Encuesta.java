@@ -43,7 +43,7 @@ public class Encuesta implements Serializable {
     @Basic(optional = false)
     @Column(name = "idENCUESTA")
     private Integer idENCUESTA;
-    @Size(max = 50)
+    @Size(max = 255)
     @Column(name = "nombre")
     private String nombre;
     @JoinColumn(name = "ESTADO_idESTADO", referencedColumnName = "idESTADO")
@@ -147,7 +147,7 @@ public class Encuesta implements Serializable {
 
     @Override
     public String toString() {
-        return "modelo.Encuesta[ idENCUESTA=" + idENCUESTA + " ]";
+        return nombre;
     }
     
 }

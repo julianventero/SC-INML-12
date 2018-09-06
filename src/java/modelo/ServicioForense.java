@@ -125,7 +125,7 @@ public class ServicioForense implements Serializable {
 
     @Override
     public String toString() {
-        return "modelo.ServicioForense[ idSERVICIOFORENSE=" + idSERVICIOFORENSE + " ]";
+        return nombre;
     }
     
 }

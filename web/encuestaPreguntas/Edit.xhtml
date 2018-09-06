@@ -11,26 +11,26 @@
         <p:dialog id="EncuestaPreguntasEditDlg" widgetVar="EncuestaPreguntasEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditEncuestaPreguntasTitle}">
             <h:form id="EncuestaPreguntasEditForm">
                 <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{encuestaPreguntasController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditEncuestaPreguntasLabel_idENCUESTAPREGUNTAS}" for="idENCUESTAPREGUNTAS" />
-                        <p:inputText id="idENCUESTAPREGUNTAS" value="#{encuestaPreguntasController.selected.idENCUESTAPREGUNTAS}" title="#{bundle.EditEncuestaPreguntasTitle_idENCUESTAPREGUNTAS}" required="true" requiredMessage="#{bundle.EditEncuestaPreguntasRequiredMessage_idENCUESTAPREGUNTAS}"/>
-                        <p:outputLabel value="#{bundle.EditEncuestaPreguntasLabel_ENCUESTAidENCUESTA}" for="ENCUESTAidENCUESTA" />
-                        <p:selectOneMenu id="ENCUESTAidENCUESTA" value="#{encuestaPreguntasController.selected.ENCUESTAidENCUESTA}" required="true" requiredMessage="#{bundle.EditEncuestaPreguntasRequiredMessage_ENCUESTAidENCUESTA}">
+                    <p:panelGrid columns="2" rendered="#{encuestaPreguntasController.selected != null}" style="margin-bottom:10px">
+                        <p:outputLabel value="#{bundle.Encuestas}" for="ENCUESTAidENCUESTA" />
+                        <p:selectOneMenu id="ENCUESTAidENCUESTA" value="#{encuestaPreguntasController.selected.ENCUESTAidENCUESTA}" required="true">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{encuestaController.itemsAvailableSelectOne}"
                                            var="ENCUESTAidENCUESTAItem"
                                            itemValue="#{ENCUESTAidENCUESTAItem}"/>
                         </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.EditEncuestaPreguntasLabel_PREGUNTASidPREGUNTAS}" for="PREGUNTASidPREGUNTAS" />
-                        <p:selectOneMenu id="PREGUNTASidPREGUNTAS" value="#{encuestaPreguntasController.selected.PREGUNTASidPREGUNTAS}" required="true" requiredMessage="#{bundle.EditEncuestaPreguntasRequiredMessage_PREGUNTASidPREGUNTAS}">
+                        <p:outputLabel value="#{bundle.Preguntas}" for="PREGUNTASidPREGUNTAS" />
+                        <p:selectOneMenu id="PREGUNTASidPREGUNTAS" value="#{encuestaPreguntasController.selected.PREGUNTASidPREGUNTAS}" required="true">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{preguntasController.itemsAvailableSelectOne}"
                                            var="PREGUNTASidPREGUNTASItem"
                                            itemValue="#{PREGUNTASidPREGUNTASItem}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{encuestaPreguntasController.update}" value="#{bundle.Save}" update="display,:EncuestaPreguntasListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EncuestaPreguntasEditDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="EncuestaPreguntasEditDialog.hide()"/>
+                    <div id="botones" align="Center">
+                        <p:commandButton actionListener="#{encuestaPreguntasController.update}" value="#{bundle.Save}" update="display,:EncuestaPreguntasListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EncuestaPreguntasEditDialog');" onclick="EncuestaPreguntasEditDialog.hide()"/>
+                        <p:commandButton value="#{bundle.Cancel}" onclick="EncuestaPreguntasEditDialog.hide()"/>
+                    </div>    
                 </h:panelGroup>
             </h:form>
         </p:dialog>

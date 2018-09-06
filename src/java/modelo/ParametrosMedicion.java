@@ -125,7 +125,7 @@ public class ParametrosMedicion implements Serializable {
 
     @Override
     public String toString() {
-        return "modelo.ParametrosMedicion[ idPARAMETROSMEDICION=" + idPARAMETROSMEDICION + " ]";
+        return nombre;
     }
     
 }

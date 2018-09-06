@@ -23,11 +23,12 @@ import javax.faces.convert.FacesConverter;
 @SessionScoped
 public class PreguntasParametrosMedicionController implements Serializable {
 
+    
     @EJB
     private fachada.PreguntasParametrosMedicionFacade ejbFacade;
     private List<PreguntasParametrosMedicion> items = null;
     private PreguntasParametrosMedicion selected;
-
+    
     public PreguntasParametrosMedicionController() {
     }
 
@@ -161,5 +162,6 @@ public class PreguntasParametrosMedicionController implements Serializable {
         }
 
     }
-
+    
+    
 }

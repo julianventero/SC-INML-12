@@ -5,6 +5,7 @@
  */
 package fachada;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -28,5 +29,8 @@ public class PreguntasFacade extends AbstractFacade<Preguntas> {
     public PreguntasFacade() {
         super(Preguntas.class);
     }
-    
+        
+    public List<Preguntas> verPreguntas2(int servicio){
+    return em.createNativeQuery("select * from preguntas where idPREGUNTAS =?1", Preguntas.class).setParameter(1,servicio).getResultList();
+    }
 }

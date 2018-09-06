@@ -11,19 +11,21 @@
         <p:dialog id="EncuestaViewDlg" widgetVar="EncuestaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEncuestaTitle}">
             <h:form id="EncuestaViewForm">
                 <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{encuestaController.selected != null}">
-                        <h:outputText value="#{bundle.ViewEncuestaLabel_idENCUESTA}"/>
-                        <h:outputText value="#{encuestaController.selected.idENCUESTA}" title="#{bundle.ViewEncuestaTitle_idENCUESTA}"/>
-                        <h:outputText value="#{bundle.ViewEncuestaLabel_nombre}"/>
-                        <h:outputText value="#{encuestaController.selected.nombre}" title="#{bundle.ViewEncuestaTitle_nombre}"/>
-                        <h:outputText value="#{bundle.ViewEncuestaLabel_ESTADOidESTADO}"/>
-                        <h:outputText value="#{encuestaController.selected.ESTADOidESTADO}" title="#{bundle.ViewEncuestaTitle_ESTADOidESTADO}"/>
-                        <h:outputText value="#{bundle.ViewEncuestaLabel_SERVICIOFORENSEidSERVICIOFORENSE}"/>
-                        <h:outputText value="#{encuestaController.selected.SERVICIOFORENSEidSERVICIOFORENSE}" title="#{bundle.ViewEncuestaTitle_SERVICIOFORENSEidSERVICIOFORENSE}"/>
-                        <h:outputText value="#{bundle.ViewEncuestaLabel_USUARIOcedula}"/>
-                        <h:outputText value="#{encuestaController.selected.USUARIOcedula}" title="#{bundle.ViewEncuestaTitle_USUARIOcedula}"/>
+                    <p:panelGrid columns="2" rendered="#{encuestaController.selected != null}" style="margin-bottom:10px">
+                        <h:outputText value="#{bundle.Label_id}"/>
+                        <h:outputText value="#{encuestaController.selected.idENCUESTA}"/>
+                        <h:outputText value="#{bundle.Label_nombre}"/>
+                        <h:outputText value="#{encuestaController.selected.nombre}" />
+                        <h:outputText value="#{bundle.Estado}"/>
+                        <h:outputText value="#{encuestaController.selected.ESTADOidESTADO.nombre}"/>
+                        <h:outputText value="#{bundle.Servicio_Forense}"/>
+                        <h:outputText value="#{encuestaController.selected.SERVICIOFORENSEidSERVICIOFORENSE.nombre}" />
+                        <h:outputText value="#{bundle.Label_usuario}"/>
+                        <h:outputText value="#{encuestaController.selected.USUARIOcedula}"/>
                     </p:panelGrid>
-                    <p:commandButton value="#{bundle.Close}" onclick="EncuestaViewDialog.hide()"/>
+                    <div id="botones" align="Center">
+                        <p:commandButton value="#{bundle.Close}" onclick="EncuestaViewDialog.hide()"/>
+                    </div>    
                 </h:panelGroup>
             </h:form>
         </p:dialog>

@@ -23,11 +23,31 @@ import javax.faces.convert.FacesConverter;
 @SessionScoped
 public class EncuestaPreguntasController implements Serializable {
 
+    public fachada.EncuestaPreguntasFacade getEjbFacadeEncuestaPreguntas() {
+        return ejbFacadeEncuestaPreguntas;
+    }
+
+    public List<EncuestaPreguntas> getItemsEncuestaPreguntas() {
+        if(ItemsEncuestaPreguntas==null){
+        ItemsEncuestaPreguntas=ejbFacadeEncuestaPreguntas.verPreguntas(1);
+        }
+        return ItemsEncuestaPreguntas;
+    }
+    
+    public EncuestaPreguntas getSelectedEncuestaPreguntas() {
+        return selectedEncuestaPreguntas;
+    }
+
     @EJB
     private fachada.EncuestaPreguntasFacade ejbFacade;
     private List<EncuestaPreguntas> items = null;
     private EncuestaPreguntas selected;
-
+    
+    @EJB
+    private fachada.EncuestaPreguntasFacade ejbFacadeEncuestaPreguntas;
+    private List<EncuestaPreguntas> ItemsEncuestaPreguntas;
+    private EncuestaPreguntas selectedEncuestaPreguntas;
+    
     public EncuestaPreguntasController() {
     }
 

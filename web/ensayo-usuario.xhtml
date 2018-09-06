@@ -6,19 +6,9 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 
-    <ui:composition template="/template-usuario.xhtml">
+    <ui:composition template="template-usuario.xhtml">
 
     <ui:define name="contenido">
-        
-        <h:form >
-            <p:panelGrid columns="2" rendered="#{usuarioController.items}" >
-                            <p:outputLabel value="#{bundle.Label_cedula}" for="cedula" />
-                            <p:inputText id="cedula" value="#{item.cedula}" required="true" />
-                            <h:outputText value="#{item.apellido}"/>
-                            <p:outputLabel value="#{bundle.Label_nombre}" for="nombre" />
-
-                        </p:panelGrid>      
-        </h:form>    
         <h1>TITUTLO</h1>
                         aqui va el contenido
     </ui:define>
