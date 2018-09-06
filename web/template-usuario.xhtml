@@ -15,10 +15,10 @@
     <h:body>
         <p:growl id="growl" life="3000" />
         <!-- Layout de la parte superior-->
-        <p:layout style="min-width:1110px;min-height:631px;">
+        <p:layout style="min-width:1110px;min-height:800px;">
             <p:layoutUnit position="north" size="44" header="Sistema de encuestas de satisfacción clientes"> </p:layoutUnit>
             <!-- Layout para el menu izquierdo-->
-            <p:layoutUnit position="west" resizable="true" size="800" minSize="100" maxSize="245">
+            <p:layoutUnit position="west" resizable="true" size="245">
                 <!-- Logo INML-->
                 <img src="../Imagenes/INML.jpg"> </img><br> </br>
                 
@@ -37,7 +37,7 @@
             </p:layoutUnit>
             
             <!-- Layout para el contenido dinamico-->
-            <p:layoutUnit position="center">
+            <p:layoutUnit position="center" style="min-width:800px;min-height:800px;">
                 <ui:insert name="contenido" > 
                 Aqui va el contenido
                 </ui:insert>
