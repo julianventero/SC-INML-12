@@ -26,11 +26,19 @@
                         <p:inputText id="planeada" value="#{muestraController.selected.planeada}" />
                         <p:outputLabel value="#{bundle.fechaMuestra}" for="fechaMuestra" />
                         <p:calendar id="fechaMuestra" pattern="MM/dd/yyyy" value="#{muestraController.selected.fechaMuestra}" showOn="button"/>
-                        <p:outputLabel value="#{bundle.Encuestas}" for="ENCUESTAidENCUESTA" />
+                        <p:outputLabel value="#{bundle.Servicio_Forense}" for="SERVICIOFORENSEidSERVICIOFORENSE"  />
+                        <p:selectOneMenu id="SERVICIOFORENSEidSERVICIOFORENSE" value="#{muestraController.servicio}" required="true" >
+                            <f:selectItem itemLabel="Seleccione un servicio forense" />
+                            <f:selectItems value="#{servicioForenseController.itemsAvailableSelectOne}"
+                                           var="SERVICIOFORENSEidSERVICIOFORENSEItem"
+                                           itemValue="#{SERVICIOFORENSEidSERVICIOFORENSEItem}"/>
+                            <p:ajax event="change"  update="ENCUESTAidENCUESTA"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.Encuestas}" for="ENCUESTAidENCUESTA"  />
                         <p:selectOneMenu id="ENCUESTAidENCUESTA" value="#{muestraController.selected.ENCUESTAidENCUESTA}" required="true" >
-                            <f:selectItems value="#{encuestaController.itemsAvailableSelectOne}"
-                                           var="ENCUESTAidENCUESTAItem"
-                                           itemValue="#{ENCUESTAidENCUESTAItem}"/>
+                            <f:selectItems value="#{muestraController.encuestas}"
+                                           var="idEncuestaItem"
+                                           itemValue="#{idEncuestaItem.nombre}"/>
                         </p:selectOneMenu>
                         
                     </p:panelGrid>
@@ -42,25 +50,7 @@
             
            
             <h3>Muestra estadistica</h3>
-            <h:form id="Muestra">
-                <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{muestraController.selected != null}" >
-                        <p:outputLabel value="#{bundle.Muestra_planeada}" for="planeada" />
-                        <p:inputText id="planeada" value="#{muestraController.selected.planeada}"  />
-                        <p:outputLabel value="#{bundle.fechaMuestra}" for="fechaMuestra" />
-                        <p:calendar id="fechaMuestra" pattern="MM/dd/yyyy" value="#{muestraController.selected.fechaMuestra}" showOn="button"/>
-                        <p:outputLabel value="#{bundle.Encuestas}" for="ENCUESTAidENCUESTA"  />
-                        <p:selectOneMenu id="ENCUESTAidENCUESTA" value="#{muestraController.selected.ENCUESTAidENCUESTA}" required="true" >
-                            <f:selectItems value="#{encuestaController.itemsAvailableSelectOne}"
-                                           var="ENCUESTAidENCUESTAItem"
-                                           itemValue="#{ENCUESTAidENCUESTAItem}"/>
-                        </p:selectOneMenu>
-                    </p:panelGrid>
-                    <p:commandButton actionListener="#{muestraController.create}" value="#{bundle.Save}" />
-                   
-                    
-                </h:panelGroup>
-            </h:form> 
+            
             
             
             <!--
