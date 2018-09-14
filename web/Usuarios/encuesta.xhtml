@@ -38,55 +38,77 @@
                         <p:selectOneMenu id="ENCUESTAidENCUESTA" value="#{muestraController.selected.ENCUESTAidENCUESTA}" required="true" >
                             <f:selectItems value="#{muestraController.encuestas}"
                                            var="idEncuestaItem"
-                                           itemValue="#{idEncuestaItem.nombre}"/>
+                                           itemValue="#{idEncuestaItem}"/>
                         </p:selectOneMenu>
                         
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{muestraController.create}" value="#{bundle.Save}" update="display,:growl" oncomplete="handleSubmit(args,'MuestraCreateDialog');"/>
+                    <p:commandButton actionListener="#{muestraController.create}" value="#{bundle.Save}" update="display,:growl, :formulario" oncomplete="handleSubmit(args,'MuestraCreateDialog');" onclick="MuestraCreateDialog.hide()"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="MuestraCreateDialog.hide()"/>
                 </h:panelGroup>
             </h:form>
             </p:dialog>
             
-           
-            <h3>Muestra estadistica</h3>
             
+            <h3>Modal Respuesta</h3>
             
-            
-            <!--
-            
-            <h1>Seleccione encuesta</h1>
-                    <h:form>
-                        <p:outputLabel value="Digite id encuesta"  />
-                        <p:inputText value="#{preguntasController.encuesta}" id="id_encuesta" /> <br></br>
-                        <p:commandButton  value="Siguiente" action="#{preguntasController.ensayo()}"/>
-                        
-                    </h:form>  -->
             <h:form>
-                <p:dataList id="datalist" value="#{encuestaPreguntasController.itemsEncuestaPreguntas}" var="itemm"
-                            >
-                    
-                
-                            <f:facet name="header">
-                                <h:outputText value="Pregunta - Parametros de medicion"/>
-                            </f:facet>
-                    
-                                                        
-                            <p:column>
-                                <h:outputText value="#{itemm.PREGUNTASidPREGUNTAS.pregunta}"/>
-                                <!-- una idea puede ser mandar el id de la pregunta al controlador y de alli al facade-->
-                            </p:column> <br></br>
+                <p:panelGrid columns="2" rendered="#{respuestaController.selected != null}">
+                        <p:outputLabel value="#{bundle.fechaRealizacion}" for="fechaRealizacion" />
+                        <p:calendar id="fechaRealizacion" pattern="MM/dd/yyyy" value="#{respuestaController.selected.fechaRealizacion}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.Cliente}" for="CLIENTEidCLIENTE" />
+                        <p:selectOneMenu id="CLIENTEidCLIENTE" value="#{respuestaController.selected.CLIENTEidCLIENTE}" required="true" >
+                            <f:selectItems value="#{clienteController.itemsAvailableSelectOne}"
+                                           var="CLIENTEidCLIENTEItem"
+                                           itemValue="#{CLIENTEidCLIENTEItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.Parametro_Medicion}" for="PARAMETROSMEDICIONidPARAMETROSMEDICION" />
+                        <p:selectOneMenu id="PARAMETROSMEDICIONidPARAMETROSMEDICION" value="#{respuestaController.selected.PARAMETROSMEDICIONidPARAMETROSMEDICION}" >
+                            <f:selectItems value="#{parametrosMedicionController.itemsAvailableSelectOne}"
+                                           var="PARAMETROSMEDICIONidPARAMETROSMEDICIONItem"
+                                           itemValue="#{PARAMETROSMEDICIONidPARAMETROSMEDICIONItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.Seccional}" for="SECCIONALidSECCIONAL" />
+                        <p:selectOneMenu id="SECCIONALidSECCIONAL" value="#{respuestaController.selected.SECCIONALidSECCIONAL}" required="true" >
+                            <f:selectItems value="#{seccionalController.itemsAvailableSelectOne}"
+                                           var="SECCIONALidSECCIONALItem"
+                                           itemValue="#{SECCIONALidSECCIONALItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+            </h:form>
+           
+            <h:link outcome="/Usuarios/pregunta" value="Datalist preguntas"/> <br></br>
+            
+            <h:form id="formulario">
+                    <p:dataTable id="datalist" value="#{muestraController.itemsEncuestaPreguntas}" var="itemm"
+                                 selectionMode="single" selection="#{muestraController.idPregunta}"
+                                 rowKey="#{itemm.idENCUESTAPREGUNTAS}">
+
+                        <p:ajax event="rowSelect"   update="PM" />
+                        <p:ajax event="rowUnselect" update="PM"/>
+                        <f:facet name="header">
+                            <h:outputText  value="#{muestraController.selected.ENCUESTAidENCUESTA.nombre}"/>
+                        </f:facet>
+
+                        <p:column>
+                            <h:outputText value="#{itemm.PREGUNTASidPREGUNTAS.pregunta}"/>
+                        </p:column> 
+                        <p:column>
+                            <h:outputText value="Respuesta"/>
+                        </p:column> <br></br>
+                        <f:facet name="footer">
+                            <p:outputLabel value="#{bundle.Parametro_Medicion}" for="PM" />
+                            <p:selectOneMenu  id="PM" >
+                                <f:selectItems value="#{muestraController.itemsParametrosMedicion}" 
+                                               var="pItem"
+                                               itemValue="#{pItem.nombre}"/>
+                            </p:selectOneMenu>
                             
-                        <!--    <p:selectOneMenu id="console" >
-                                <f:selectItem itemLabel="Seleccione una respuesta" />
-                                <f:selectItem itemLabel="#{itemm.PREGUNTASidPREGUNTAS.ASPECTOidASPECTO.nombre}" />
-                                
-                                
-                            </p:selectOneMenu> -->
-                            
-                </p:dataList>
-            </h:form>    
-                
+                        </f:facet>
+                    </p:dataTable>
+
+                </h:form> 
+             
+             
             </ui:define>
 
         </ui:composition>

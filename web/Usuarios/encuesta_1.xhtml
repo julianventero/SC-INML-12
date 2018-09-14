@@ -12,27 +12,7 @@
             
             <ui:define name="contenido">
             
-            <!-- Este es un ejemplo de como traerse el metodo de consulta hecho en el facade
-            desde el controlador a la vista    -->
-            </h:form>
             
-                    <h:form>
-                        <p:dataTable id="datalistx" value="#{preguntasController.itemsPreguntas}" var="itemx"
-                                     selectionMode="single" selection="#{preguntasController.selected}"
-                                     paginator="true" paginatorPosition="bottom"
-                                 rowKey="#{itemx.idPREGUNTAS}"
-                                 rows="10">
-
-
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Pregunta"/>
-                            </f:facet>
-                            <h:outputText value="#{itemx.pregunta}"/>
-                        </p:column>
-   
-                    </p:dataTable>
-                    </h:form> 
             </ui:define>
 
         </ui:composition>

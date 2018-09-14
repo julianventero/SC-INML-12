@@ -112,7 +112,7 @@ public class EncuestaPreguntas implements Serializable {
 
     @Override
     public String toString() {
-        return "modelo.EncuestaPreguntas[ idENCUESTAPREGUNTAS=" + idENCUESTAPREGUNTAS + " ]";
+        return idENCUESTAPREGUNTAS.toString();
     }
     
 }

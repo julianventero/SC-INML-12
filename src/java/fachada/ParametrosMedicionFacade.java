@@ -5,10 +5,12 @@
  */
 package fachada;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import modelo.ParametrosMedicion;
+import modelo.PreguntasParametrosMedicion;
 
 /**
  *
@@ -28,5 +30,9 @@ public class ParametrosMedicionFacade extends AbstractFacade<ParametrosMedicion>
     public ParametrosMedicionFacade() {
         super(ParametrosMedicion.class);
     }
-    
+
+    public List<ParametrosMedicion> parametrosXpregunta(String id_pregunta) {
+        return em.createNativeQuery("select * from parametros_medicion p inner join preguntas_parametros_medicion pp on p.idPARAMETROS_MEDICION=pp.PARAMETROS_MEDICION_idPARAMETROS_MEDICION where  pp.PREGUNTAS_idPREGUNTAS=?1",ParametrosMedicion.class).setParameter(1, id_pregunta).getResultList();
+    }
+
 }

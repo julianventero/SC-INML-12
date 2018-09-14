@@ -27,7 +27,7 @@ public class PreguntasController implements Serializable {
     private fachada.PreguntasFacade ejbFacade;
     private List<Preguntas> items = null;
     private Preguntas selected;
-    private int Encuesta;
+    
     
     
     @EJB
@@ -170,20 +170,6 @@ public class PreguntasController implements Serializable {
 
     }
 
-    /* Metodos set-get de encuesta y get para traer consulta*/
-    public int getEncuesta() {
-        return Encuesta;
-    }
-
-    public void setEncuesta(int Encuesta) {
-        this.Encuesta = Encuesta;
-    }
-    
-    public void ensayo (){
-        System.out.println("EL VALOR DEL ID ENCUESTA ES" +Encuesta);
-        
-    }
-    
     public fachada.PreguntasFacade getEjbFacadePreguntas() {
         return ejbFacadePreguntas;
     }

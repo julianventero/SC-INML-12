@@ -3,6 +3,7 @@ package controlador;
 import modelo.Muestra;
 import controlador.util.JsfUtil;
 import controlador.util.JsfUtil.PersistAction;
+import fachada.EncuestaFacade;
 import fachada.MuestraFacade;
 
 import java.io.Serializable;
@@ -18,6 +19,12 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import modelo.Encuesta;
+import modelo.EncuestaPreguntas;
+import modelo.ParametrosMedicion;
+import modelo.PreguntasParametrosMedicion;
+import modelo.Respuesta;
+import modelo.ServicioForense;
 
 @Named("muestraController")
 @SessionScoped
@@ -25,8 +32,75 @@ public class MuestraController implements Serializable {
 
     @EJB
     private fachada.MuestraFacade ejbFacade;
+
+    //EJB PARA TRAER EL NOMBRE DE LA ENCUESTA DE ACUERDO AL SERVICIO FORENSE SELECCIONADO
+    @EJB
+    private fachada.EncuestaFacade ejbFacadeEncuesta;
     private List<Muestra> items = null;
     private Muestra selected;
+    private ServicioForense servicio;
+    private List<Encuesta> encuestas;
+    private String idPregunta;
+
+    //EJB PARA TRAERME LAS PREGUNTAS RESPECTO A LA ENCUESTA QUE SELECCIONEN
+    @EJB
+    private fachada.EncuestaPreguntasFacade ejbFacadeEncuestaPreguntas;
+    private List<EncuestaPreguntas> ItemsEncuestaPreguntas;
+    private EncuestaPreguntas selectedEncuestaPreguntas;
+    //EJB PARA TRAER LOS PARAMETROS DE MEDICION RESPECTO A LAS PREGUNTAS
+    @EJB
+    private fachada.ParametrosMedicionFacade ejbFacadeParametrosMedicionFacade;
+    private List<ParametrosMedicion> ItemsParametrosMedicion;
+    private ParametrosMedicion selectedParametrosMedicion;
+
+    //METODOS DEL EJB PARA TRAERME LAS PREGUNTAS RESPECTO A LA ENCUESTA QUE SELECCIONEN
+    public fachada.EncuestaPreguntasFacade getEjbFacadeEncuestaPreguntas() {
+        return ejbFacadeEncuestaPreguntas;
+    }
+
+    public List<EncuestaPreguntas> getItemsEncuestaPreguntas() {
+        if (ItemsEncuestaPreguntas == null) {
+            try{
+            ItemsEncuestaPreguntas = ejbFacadeEncuestaPreguntas.verPreguntas(selected.getENCUESTAidENCUESTA().getIdENCUESTA());
+            }
+            catch (Exception e) {
+
+        }
+        }
+        return ItemsEncuestaPreguntas;
+    }
+    
+    public EncuestaPreguntas getSelectedEncuestaPreguntas() {
+        return selectedEncuestaPreguntas;
+    }
+    //METODOS DEL EJB PARA TRAER LOS PARAMETROS DE MEDICION RESPECTO A LA PREGUNTA QUE SELECCIONEN
+    public fachada.ParametrosMedicionFacade getEjbFacadeParametrosMedicionFacade() {
+        return ejbFacadeParametrosMedicionFacade;
+    }
+
+    public String getIdPregunta() {
+        return idPregunta;
+    }
+
+    public void setIdPregunta(String idPregunta) {
+        this.idPregunta = idPregunta;
+        getItemsParametrosMedicion();
+    }
+
+    public List<ParametrosMedicion> getItemsParametrosMedicion() {
+
+        try {
+            ItemsParametrosMedicion = ejbFacadeParametrosMedicionFacade.parametrosXpregunta(idPregunta);
+        } catch (Exception e) {
+
+        }
+
+        return ItemsParametrosMedicion;
+    }
+
+    public ParametrosMedicion getSelectedParametrosMedicion() {
+        return selectedParametrosMedicion;
+    }
 
     public MuestraController() {
     }
@@ -47,6 +121,10 @@ public class MuestraController implements Serializable {
 
     private MuestraFacade getFacade() {
         return ejbFacade;
+    }
+
+    public EncuestaFacade getEjbFacadeEncuesta() {
+        return ejbFacadeEncuesta;
     }
 
     public Muestra prepareCreate() {
@@ -79,6 +157,17 @@ public class MuestraController implements Serializable {
             items = getFacade().findAll();
         }
         return items;
+    }
+
+    public List<Encuesta> getEncuestas() {
+        if (servicio != null) {
+            encuestas = ejbFacadeEncuesta.buscarXServicio(servicio.getIdSERVICIOFORENSE().toString());
+        }
+        return encuestas;
+    }
+
+    public void setEncuestas(List<Encuesta> encuestas) {
+        this.encuestas = encuestas;
     }
 
     private void persist(PersistAction persistAction, String successMessage) {
@@ -119,6 +208,14 @@ public class MuestraController implements Serializable {
 
     public List<Muestra> getItemsAvailableSelectOne() {
         return getFacade().findAll();
+    }
+
+    public ServicioForense getServicio() {
+        return servicio;
+    }
+
+    public void setServicio(ServicioForense servicio) {
+        this.servicio = servicio;
     }
 
     @FacesConverter(forClass = Muestra.class)
@@ -162,4 +259,11 @@ public class MuestraController implements Serializable {
 
     }
 
+    /*public void guardarRespuesta() {
+        Respuesta a=new Respuesta();
+       a.setCLIENTEidCLIENTE(cLIENTEidCLIENTE);
+       a.setPARAMETROSMEDICIONidPARAMETROSMEDICION(pARAMETROSMEDICIONidPARAMETROSMEDICION);
+       a.setENCUESTAPREGUNTASidENCUESTAPREGUNTAS(selectedEncuestaPreguntas);
+       ejbFacadeRespuesta.
+    }*/
 }

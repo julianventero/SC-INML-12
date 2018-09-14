@@ -29,5 +29,9 @@ public class PreguntasParametrosMedicionFacade extends AbstractFacade<PreguntasP
     public PreguntasParametrosMedicionFacade() {
         super(PreguntasParametrosMedicion.class);
     }
+    
+    public List<PreguntasParametrosMedicion> parametrosXpregunta(String id_pregunta){
+    return em.createNativeQuery("select * from preguntas_parametros_medicion where  PREGUNTAS_idPREGUNTAS=?1", PreguntasParametrosMedicion.class).setParameter(1, id_pregunta).getResultList();
+    }
    
 }
