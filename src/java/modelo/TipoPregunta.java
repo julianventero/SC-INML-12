@@ -101,7 +101,7 @@ public class TipoPregunta implements Serializable {
 
     @Override
     public String toString() {
-        return "modelo.TipoPregunta[ idTIPOPREGUNTA=" + idTIPOPREGUNTA + " ]";
+        return nombre;
     }
     
 }
