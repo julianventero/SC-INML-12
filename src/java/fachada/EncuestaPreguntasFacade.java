@@ -34,8 +34,8 @@ public class EncuestaPreguntasFacade extends AbstractFacade<EncuestaPreguntas> {
     return em.createNativeQuery("select * from ENCUESTA_PREGUNTAS where ENCUESTA_idENCUESTA = ?1", EncuestaPreguntas.class).setParameter(1, id_encuesta).getResultList();
     }
     
-    public List<EncuestaPreguntas> traerIdEncuestaPreguntas(int id_encuesta,String id_pregunta){
-    return em.createNativeQuery("select * from ENCUESTA_PREGUNTAS where ENCUESTA_idENCUESTA = ?1 and PREGUNTAS_idPREGUNTAS = ?2", EncuestaPreguntas.class).setParameter(1, id_encuesta).setParameter(2, id_pregunta).getResultList();
+    public EncuestaPreguntas traerIdEncuestaPreguntas(int id_encuesta,String id_pregunta){
+    return (EncuestaPreguntas) em.createNativeQuery("select * from ENCUESTA_PREGUNTAS where ENCUESTA_idENCUESTA = ?1 and PREGUNTAS_idPREGUNTAS = ?2", EncuestaPreguntas.class).setParameter(1, id_encuesta).setParameter(2, id_pregunta).getSingleResult();
     }
     
 }

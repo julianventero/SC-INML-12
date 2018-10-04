@@ -49,9 +49,9 @@ public class MuestraController implements Serializable {
     private List<Encuesta> encuestas;
     private String idPregunta;
     //Atributo para traer el id Encuesta_Preguntas de cada pregunta que seleccionen y guardarlo en Respuestas
-    private List<EncuestaPreguntas> ItemsidEncuestaPreguntas;
+    private EncuestaPreguntas ItemsidEncuestaPreguntas;
     
-    public List<EncuestaPreguntas> getItemsidEncuestaPreguntas() {
+    public EncuestaPreguntas getItemsidEncuestaPreguntas() {
         try{
         ItemsidEncuestaPreguntas=ejbFacadeEncuestaPreguntas.traerIdEncuestaPreguntas(selected.getENCUESTAidENCUESTA().getIdENCUESTA(), idPregunta);
         System.out.println(""+ItemsidEncuestaPreguntas);
@@ -338,6 +338,7 @@ public class MuestraController implements Serializable {
     
        
     public void guardarRespuesta() {
+        
         Respuesta a=new Respuesta();
         Cliente w =new Cliente();
         Seccional s = new Seccional();
@@ -350,6 +351,8 @@ public class MuestraController implements Serializable {
        a.setENCUESTAPREGUNTASidENCUESTAPREGUNTAS(ep);
        a.setPARAMETROSMEDICIONidPARAMETROSMEDICION(parametromedicion);
        a.setFechaRealizacion(fecharealizacion);
+       a.setENCUESTAPREGUNTASidENCUESTAPREGUNTAS(getItemsidEncuestaPreguntas());
        ejbRespuestaFacade.create(a);
+       
     }
 }

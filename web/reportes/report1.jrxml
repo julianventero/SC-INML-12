@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="587f9e93-aeca-40eb-9e99-8b1ae00ebed6">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fechaINI" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fechaFIN" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+
+     respuesta.`idRESPUESTA` AS respuesta_idRESPUESTA,
+     respuesta.`respuesta` AS respuesta_respuesta,
+     respuesta.`fecha_realizacion` AS respuesta_fecha_realizacion,
+     respuesta.`PARAMETROS_MEDICION_idPARAMETROS_MEDICION` AS respuesta_PARAMETROS_MEDICION_idPARAMETROS_MEDICION,
+     respuesta.`ENCUESTA_PREGUNTAS_idENCUESTA_PREGUNTAS` AS respuesta_ENCUESTA_PREGUNTAS_idENCUESTA_PREGUNTAS,
+     respuesta.`CLIENTE_idCLIENTE` AS respuesta_CLIENTE_idCLIENTE,
+     respuesta.`SECCIONAL_idSECCIONAL` AS respuesta_SECCIONAL_idSECCIONAL,
+     cliente.`idCLIENTE` AS cliente_idCLIENTE,
+     cliente.`nombre` AS cliente_nombre,
+     cliente.`MUNICIPIO_idMUNICIPIO` AS cliente_MUNICIPIO_idMUNICIPIO,
+     cliente.`ESTADO_idESTADO` AS cliente_ESTADO_idESTADO,
+     parametros_medicion.`idPARAMETROS_MEDICION` AS parametros_medicion_idPARAMETROS_MEDICION,
+     parametros_medicion.`nombre` AS parametros_medicion_nombre,
+     parametros_medicion.`ESTADO_idESTADO` AS parametros_medicion_ESTADO_idESTADO,
+     encuesta.`idENCUESTA` AS encuesta_idENCUESTA,
+     encuesta.`nombre` AS encuesta_nombre,
+     encuesta.`USUARIO_cedula` AS encuesta_USUARIO_cedula,
+     encuesta.`SERVICIO_FORENSE_idSERVICIO_FORENSE` AS encuesta_SERVICIO_FORENSE_idSERVICIO_FORENSE,
+     encuesta.`ESTADO_idESTADO` AS encuesta_ESTADO_idESTADO,
+     encuesta_preguntas.`idENCUESTA_PREGUNTAS` AS encuesta_preguntas_idENCUESTA_PREGUNTAS,
+     encuesta_preguntas.`ENCUESTA_idENCUESTA` AS encuesta_preguntas_ENCUESTA_idENCUESTA,
+     encuesta_preguntas.`PREGUNTAS_idPREGUNTAS` AS encuesta_preguntas_PREGUNTAS_idPREGUNTAS
+FROM
+     `cliente` cliente INNER JOIN `respuesta` respuesta ON cliente.`idCLIENTE` = respuesta.`CLIENTE_idCLIENTE`
+     INNER JOIN `parametros_medicion` parametros_medicion ON respuesta.`PARAMETROS_MEDICION_idPARAMETROS_MEDICION` = parametros_medicion.`idPARAMETROS_MEDICION`
+     INNER JOIN `encuesta_preguntas` encuesta_preguntas ON respuesta.`ENCUESTA_PREGUNTAS_idENCUESTA_PREGUNTAS` = encuesta_preguntas.`idENCUESTA_PREGUNTAS`
+     INNER JOIN `encuesta` encuesta ON encuesta_preguntas.`ENCUESTA_idENCUESTA` = encuesta.`idENCUESTA`
+where respuesta.fecha_realizacion>=$P{fechaINI} and respuesta.fecha_realizacion <=$P{fechaFIN}]]>
+	</queryString>
+	<field name="respuesta_idRESPUESTA" class="java.lang.Integer"/>
+	<field name="respuesta_respuesta" class="java.lang.String"/>
+	<field name="respuesta_fecha_realizacion" class="java.sql.Date"/>
+	<field name="respuesta_PARAMETROS_MEDICION_idPARAMETROS_MEDICION" class="java.lang.Integer"/>
+	<field name="respuesta_ENCUESTA_PREGUNTAS_idENCUESTA_PREGUNTAS" class="java.lang.Integer"/>
+	<field name="respuesta_CLIENTE_idCLIENTE" class="java.lang.Integer"/>
+	<field name="respuesta_SECCIONAL_idSECCIONAL" class="java.lang.Integer"/>
+	<field name="cliente_idCLIENTE" class="java.lang.Integer"/>
+	<field name="cliente_nombre" class="java.lang.String"/>
+	<field name="cliente_MUNICIPIO_idMUNICIPIO" class="java.lang.Integer"/>
+	<field name="cliente_ESTADO_idESTADO" class="java.lang.Integer"/>
+	<field name="parametros_medicion_idPARAMETROS_MEDICION" class="java.lang.Integer"/>
+	<field name="parametros_medicion_nombre" class="java.lang.String"/>
+	<field name="parametros_medicion_ESTADO_idESTADO" class="java.lang.Integer"/>
+	<field name="encuesta_idENCUESTA" class="java.lang.Integer"/>
+	<field name="encuesta_nombre" class="java.lang.String"/>
+	<field name="encuesta_USUARIO_cedula" class="java.lang.Integer"/>
+	<field name="encuesta_SERVICIO_FORENSE_idSERVICIO_FORENSE" class="java.lang.Integer"/>
+	<field name="encuesta_ESTADO_idESTADO" class="java.lang.Integer"/>
+	<field name="encuesta_preguntas_idENCUESTA_PREGUNTAS" class="java.lang.Integer"/>
+	<field name="encuesta_preguntas_ENCUESTA_idENCUESTA" class="java.lang.Integer"/>
+	<field name="encuesta_preguntas_PREGUNTAS_idPREGUNTAS" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="3470c085-550f-4956-bb4f-9e2915e9aa1f" x="0" y="0" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[respuesta_respuesta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b9f43324-41a1-408f-9266-1450a5127513" x="100" y="1" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[cliente_nombre]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement uuid="00a80d6b-aaba-498f-a095-ee616e700c74" x="0" y="0" width="100" height="20"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{respuesta_respuesta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a145974b-90be-4312-a4bc-7ef88e20fa3d" x="100" y="0" width="100" height="20"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cliente_nombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
