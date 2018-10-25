@@ -363,13 +363,14 @@ public class MuestraController implements Serializable {
        
     public void guardarRespuesta() {
         
-        Respuesta a=new Respuesta();
+       Respuesta a=new Respuesta();
        a.setCLIENTEidCLIENTE(idcliente);
        a.setSECCIONALidSECCIONAL(idseccional);
        a.setPARAMETROSMEDICIONidPARAMETROSMEDICION(parametromedicion);
        a.setFechaRealizacion(fecharealizacion);
        a.setENCUESTAPREGUNTASidENCUESTAPREGUNTAS(getItemsidEncuestaPreguntas());
        ejbRespuestaFacade.create(a);
+       
        
     }
 

@@ -5,6 +5,7 @@
  */
 package fachada;
 
+import static com.sun.javafx.logging.PulseLogger.addMessage;
 import java.util.List;
 import javax.persistence.EntityManager;
 
@@ -24,6 +25,7 @@ public abstract class AbstractFacade<T> {
 
     public void create(T entity) {
         getEntityManager().persist(entity);
+        
     }
 
     public void edit(T entity) {
