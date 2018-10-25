@@ -13,9 +13,9 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{criterioController.selected != null}" style="margin-bottom:10px">
                         <p:outputLabel value="#{bundle.Label_nombre}" for="nombre" />
-                        <p:inputText id="nombre" value="#{criterioController.selected.nombre}" />
+                        <p:inputText id="nombre" value="#{criterioController.selected.nombre}" required="true" requiredMessage="#{bundle.RequiredMessage}"/>
                         <p:outputLabel value="#{bundle.Estado}" for="ESTADOidESTADO" />
-                        <p:selectOneMenu id="ESTADOidESTADO" value="#{criterioController.selected.ESTADOidESTADO}" >
+                        <p:selectOneMenu id="ESTADOidESTADO" value="#{criterioController.selected.ESTADOidESTADO}" required="true" requiredMessage="#{bundle.RequiredMessage}">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{estadoController.itemsAvailableSelectOne}"
                                            var="ESTADOidESTADOItem"

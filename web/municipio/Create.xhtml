@@ -13,15 +13,17 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{municipioController.selected != null}" style="margin-bottom:10px">
                         <p:outputLabel value="#{bundle.Label_nombre}" for="nombre" />
-                        <p:inputText id="nombre" value="#{municipioController.selected.nombre}" />
+                        <p:inputText id="nombre" value="#{municipioController.selected.nombre}" required="true" requiredMessage="#{bundle.RequiredMessage}"/>
                         <p:outputLabel value="#{bundle.Estado}" for="ESTADOidESTADO" />
-                        <p:selectOneMenu id="ESTADOidESTADO" value="#{municipioController.selected.ESTADOidESTADO}">
+                        <p:selectOneMenu id="ESTADOidESTADO" value="#{municipioController.selected.ESTADOidESTADO}" required="true" requiredMessage="#{bundle.RequiredMessage}">
+                            <f:selectItem itemLabel="Seleccione uno"/>
                             <f:selectItems value="#{estadoController.itemsAvailableSelectOne}"
                                            var="ESTADOidESTADOItem"
                                            itemValue="#{ESTADOidESTADOItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.Seccional}" for="SECCIONALidSECCIONAL" />
-                        <p:selectOneMenu id="SECCIONALidSECCIONAL" value="#{municipioController.selected.SECCIONALidSECCIONAL}">
+                        <p:selectOneMenu id="SECCIONALidSECCIONAL" value="#{municipioController.selected.SECCIONALidSECCIONAL}" required="true" requiredMessage="#{bundle.RequiredMessage}">
+                            <f:selectItem itemLabel="Seleccione uno"/>
                             <f:selectItems value="#{seccionalController.itemsAvailableSelectOne}"
                                            var="SECCIONALidSECCIONALItem"
                                            itemValue="#{SECCIONALidSECCIONALItem}"/>

@@ -13,23 +13,23 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{preguntasController.selected != null}" style="margin-bottom:10px">
                         <p:outputLabel value="#{bundle.Pregunta}" for="pregunta" />
-                        <p:inputText id="pregunta" value="#{preguntasController.selected.pregunta}" />
+                        <p:inputText id="pregunta" value="#{preguntasController.selected.pregunta}" required="true" requiredMessage="#{bundle.RequiredMessage}"/>
                         <p:outputLabel value="#{bundle.Aspecto}" for="ASPECTOidASPECTO" />
-                        <p:selectOneMenu id="ASPECTOidASPECTO" value="#{preguntasController.selected.ASPECTOidASPECTO}" >
+                        <p:selectOneMenu id="ASPECTOidASPECTO" value="#{preguntasController.selected.ASPECTOidASPECTO}" required="true" requiredMessage="#{bundle.RequiredMessage}">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{aspectoController.itemsAvailableSelectOne}"
                                            var="ASPECTOidASPECTOItem"
                                            itemValue="#{ASPECTOidASPECTOItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.Estado}" for="ESTADOidESTADO" />
-                        <p:selectOneMenu id="ESTADOidESTADO" value="#{preguntasController.selected.ESTADOidESTADO}" >
+                        <p:selectOneMenu id="ESTADOidESTADO" value="#{preguntasController.selected.ESTADOidESTADO}" required="true" requiredMessage="#{bundle.RequiredMessage}">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{estadoController.itemsAvailableSelectOne}"
                                            var="ESTADOidESTADOItem"
                                            itemValue="#{ESTADOidESTADOItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.Tipo_pregunta}" for="TIPOPREGUNTAidTIPOPREGUNTA" />
-                        <p:selectOneMenu id="TIPOPREGUNTAidTIPOPREGUNTA" value="#{preguntasController.selected.TIPOPREGUNTAidTIPOPREGUNTA}" >
+                        <p:selectOneMenu id="TIPOPREGUNTAidTIPOPREGUNTA" value="#{preguntasController.selected.TIPOPREGUNTAidTIPOPREGUNTA}" required="true" requiredMessage="#{bundle.RequiredMessage}">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{tipoPreguntaController.itemsAvailableSelectOne}"
                                            var="TIPOPREGUNTAidTIPOPREGUNTAItem"

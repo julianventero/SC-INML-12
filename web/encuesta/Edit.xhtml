@@ -13,23 +13,23 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{encuestaController.selected != null}" style="margin-bottom:10px">
                         <p:outputLabel value="#{bundle.Label_nombre}" for="nombre" />
-                        <p:inputText id="nombre" value="#{encuestaController.selected.nombre}" />
+                        <p:inputText id="nombre" value="#{encuestaController.selected.nombre}" required="true" requiredMessage="#{bundle.RequiredMessage}"/>
                         <p:outputLabel value="#{bundle.Estado}" for="ESTADOidESTADO" />
-                        <p:selectOneMenu id="ESTADOidESTADO" value="#{encuestaController.selected.ESTADOidESTADO}" required="true">
+                        <p:selectOneMenu id="ESTADOidESTADO" value="#{encuestaController.selected.ESTADOidESTADO}" required="true" requiredMessage="#{bundle.RequiredMessage}">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{estadoController.itemsAvailableSelectOne}"
                                            var="ESTADOidESTADOItem"
                                            itemValue="#{ESTADOidESTADOItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.Servicio_Forense}" for="SERVICIOFORENSEidSERVICIOFORENSE" />
-                        <p:selectOneMenu id="SERVICIOFORENSEidSERVICIOFORENSE" value="#{encuestaController.selected.SERVICIOFORENSEidSERVICIOFORENSE}" required="true">
+                        <p:selectOneMenu id="SERVICIOFORENSEidSERVICIOFORENSE" value="#{encuestaController.selected.SERVICIOFORENSEidSERVICIOFORENSE}" required="true" requiredMessage="#{bundle.RequiredMessage}">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{servicioForenseController.itemsAvailableSelectOne}"
                                            var="SERVICIOFORENSEidSERVICIOFORENSEItem"
                                            itemValue="#{SERVICIOFORENSEidSERVICIOFORENSEItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.Label_usuario}" for="USUARIOcedula" />
-                        <p:selectOneMenu id="USUARIOcedula" value="#{encuestaController.selected.USUARIOcedula}" required="true">
+                        <p:selectOneMenu id="USUARIOcedula" value="#{encuestaController.selected.USUARIOcedula}" required="true" requiredMessage="#{bundle.RequiredMessage}">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"
                                            var="USUARIOcedulaItem"

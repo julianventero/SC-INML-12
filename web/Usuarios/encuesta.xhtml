@@ -11,7 +11,7 @@
         <ui:composition template="/template-usuario.xhtml">
             
             <ui:define name="contenido">
-            <h3>Muestra estadistica modal</h3>
+            <h3>Muestra estadística</h3>
             
             <h:form>
             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{muestraController.prepareCreate}" update=":MuestraCreateForm" oncomplete="PF('MuestraCreateDialog').show()"/>
@@ -23,33 +23,35 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{muestraController.selected != null}">
                         <p:outputLabel value="#{bundle.Muestra_planeada}" for="planeada" />
-                        <p:inputText id="planeada" value="#{muestraController.selected.planeada}" />
+                        <p:inputText id="planeada" value="#{muestraController.selected.planeada}" required="true" requiredMessage="#{bundle.RequiredMessage}"/>
                         <p:outputLabel value="#{bundle.fechaMuestra}" for="fechaMuestra" />
-                        <p:calendar id="fechaMuestra" pattern="MM/dd/yyyy" value="#{muestraController.selected.fechaMuestra}" showOn="button"/>
+                        <p:calendar id="fechaMuestra" pattern="MM/dd/yyyy" value="#{muestraController.selected.fechaMuestra}" showOn="button" required="true" requiredMessage="#{bundle.RequiredMessage}"/>
                         <p:outputLabel value="#{bundle.Servicio_Forense}" for="SERVICIOFORENSEidSERVICIOFORENSE"  />
-                        <p:selectOneMenu id="SERVICIOFORENSEidSERVICIOFORENSE" value="#{muestraController.servicio}" required="true" >
-                            <f:selectItem itemLabel="Seleccione un servicio forense" />
+                        <p:selectOneMenu id="SERVICIOFORENSEidSERVICIOFORENSE" value="#{muestraController.servicio}" required="true" requiredMessage="#{bundle.RequiredMessage}" >
+                            <f:selectItem itemLabel="Seleccione uno" />
                             <f:selectItems value="#{servicioForenseController.itemsAvailableSelectOne}"
                                            var="SERVICIOFORENSEidSERVICIOFORENSEItem"
                                            itemValue="#{SERVICIOFORENSEidSERVICIOFORENSEItem}"/>
                             <p:ajax event="change"  update="ENCUESTAidENCUESTA"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.Encuestas}" for="ENCUESTAidENCUESTA"  />
-                        <p:selectOneMenu id="ENCUESTAidENCUESTA" value="#{muestraController.selected.ENCUESTAidENCUESTA}" required="true" >
+                        <p:selectOneMenu id="ENCUESTAidENCUESTA" value="#{muestraController.selected.ENCUESTAidENCUESTA}" required="true" requiredMessage="#{bundle.RequiredMessage}" >
                             <f:selectItems value="#{muestraController.encuestas}"
                                            var="idEncuestaItem"
                                            itemValue="#{idEncuestaItem}"/>
                         </p:selectOneMenu>
                         
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{muestraController.create}" value="#{bundle.Save}" update="display,:growl, :formulario" oncomplete="handleSubmit(args,'MuestraCreateDialog');" onclick="MuestraCreateDialog.hide()"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="MuestraCreateDialog.hide()"/>
+                    <div id="botones" align="Center">
+                        <p:commandButton actionListener="#{muestraController.create}" value="#{bundle.Save}" update="display,:growl" oncomplete="handleSubmit(args,'MuestraCreateDialog');" onclick="MuestraCreateDialog.hide()"/>
+                        <p:commandButton value="#{bundle.Cancel}" onclick="MuestraCreateDialog.hide()"/>
+                    </div>    
                 </h:panelGroup>
             </h:form>
             </p:dialog>
             
             
-            <h3>Modal Respuesta</h3>
+            <h3>Respuestas encuestas de satisfacción</h3>
             <h:form>
                 <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{respuestaController.prepareCreate}" update=":RespuestaCreateForm" oncomplete="PF('RespuestaCreateDialog').show()"/>
             </h:form>
@@ -57,23 +59,41 @@
             
             <p:dialog id="RespuestaCreateDlg" widgetVar="RespuestaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateRespuestaTitle}">
             <h:form id="RespuestaCreateForm">
-                    <p:panelGrid columns="2" >
+                <p:panelGrid columns="2" >
                         <p:outputLabel value="#{bundle.fechaRealizacion}" for="fechaRealizacion" />
-                        <p:calendar id="fechaRealizacion" pattern="MM/dd/yyyy" value="#{muestraController.fecharealizacion}" showOn="button"/>
+                        <p:calendar id="fechaRealizacion" pattern="MM/dd/yyyy" value="#{muestraController.fecharealizacion}" showOn="button" required="true" requiredMessage="#{bundle.RequiredMessage}"/>
+                        <p:outputLabel value="#{bundle.Servicio_Forense}" for="SERVICIOFORENSEidSERVICIOFORENSE"  />
+                        <p:selectOneMenu id="SERVICIOFORENSEidSERVICIOFORENSE" value="#{muestraController.servicio}" required="true" requiredMessage="#{bundle.RequiredMessage}" >
+                            <f:selectItem itemLabel="Seleccione uno" />
+                            <f:selectItems value="#{servicioForenseController.itemsAvailableSelectOne}"
+                                           var="SERVICIOFORENSEidSERVICIOFORENSEItem"
+                                           itemValue="#{SERVICIOFORENSEidSERVICIOFORENSEItem}"/>
+                            <p:ajax event="change"  update="ENCUESTAidENCUESTA2"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.Encuestas}" for="ENCUESTAidENCUESTA2"  />
+                        <p:selectOneMenu id="ENCUESTAidENCUESTA2" value="#{muestraController.encuesta}" required="true" requiredMessage="#{bundle.RequiredMessage}" >
+                            <f:selectItems value="#{muestraController.encuestas}"
+                                           var="idEncuestaItem2"
+                                           itemValue="#{idEncuestaItem2}"/>
+                        </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.Cliente}" for="CLIENTEidCLIENTE" />
-                        <p:selectOneMenu id="CLIENTEidCLIENTE" value="#{muestraController.idcliente}" required="true" >
+                        <p:selectOneMenu id="CLIENTEidCLIENTE" value="#{muestraController.idcliente}" required="true" requiredMessage="#{bundle.RequiredMessage}" >
+                            <f:selectItem itemLabel="Seleccione uno"/>
                             <f:selectItems value="#{clienteController.itemsAvailableSelectOne}"
                                            var="CLIENTEidCLIENTEItem"
                                            itemValue="#{CLIENTEidCLIENTEItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.Seccional}" for="SECCIONALidSECCIONAL" />
-                        <p:selectOneMenu id="SECCIONALidSECCIONAL" value="#{muestraController.idseccional}" required="true" >
+                        <p:selectOneMenu id="SECCIONALidSECCIONAL" value="#{muestraController.idseccional}" required="true" requiredMessage="#{bundle.RequiredMessage}" >
+                            <f:selectItem itemLabel="Seleccione uno"/>
                             <f:selectItems value="#{seccionalController.itemsAvailableSelectOne}"
                                            var="SECCIONALidSECCIONALItem"
                                            itemValue="#{SECCIONALidSECCIONALItem}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
-                <p:commandButton  action="#{muestraController.datosRespuesta}" value="#{bundle.Save}"  onclick="RespuestaCreateDialog.hide()"/>
+                <div id="botones" align="Center">
+                    <p:commandButton  action="#{muestraController.datosRespuesta}" value="#{bundle.Save}"   update=":growl, :formulario" onclick="RespuestaCreateDialog.hide()" />
+                </div>
             </h:form>
             </p:dialog>
             
@@ -93,7 +113,7 @@
                             <h:outputText value="#{itemm.PREGUNTASidPREGUNTAS.pregunta}"/>
                         </p:column> 
                         <p:column>
-                            <h:outputText id="respuesta" value="Aqui se debe actualizar la respuesta"/>
+                            <h:outputText id="respuesta" />
                         </p:column> <br></br>
                         <f:facet name="footer">
                             <p:outputLabel value="#{bundle.Parametro_Medicion}" for="PM" />
@@ -109,16 +129,6 @@
                     </p:dataTable>
 
                 </h:form>
-            
-            <h:form>
-                <p:outputLabel  value="AQUI VA A SALIR EL ID ENCUESTAPREGUNTAS"/>
-                <p:selectOneMenu  >
-                            <f:selectItems value="#{muestraController.itemsidEncuestaPreguntas}"
-                                           var="Item"
-                                           itemValue="#{Item.idENCUESTAPREGUNTAS}"/>
-                        </p:selectOneMenu>
-            </h:form>
-             
              
             </ui:define>
 

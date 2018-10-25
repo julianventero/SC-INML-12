@@ -13,7 +13,7 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{tipoPreguntaController.selected != null}" style="margin-bottom:10px">
                         <p:outputLabel value="#{bundle.Label_nombre}" for="nombre" />
-                        <p:inputText id="nombre" value="#{tipoPreguntaController.selected.nombre}" />
+                        <p:inputText id="nombre" value="#{tipoPreguntaController.selected.nombre}" required="true" requiredMessage="#{bundle.RequiredMessage}"/>
                     </p:panelGrid>
                     <div id="botones" align="Center">
                         <p:commandButton actionListener="#{tipoPreguntaController.create}" value="#{bundle.Save}" update="display,:TipoPreguntaListForm:datalist,:growl" oncomplete="handleSubmit(args,'TipoPreguntaCreateDialog');" onclick="TipoPreguntaCreateDialog.hide()"/>

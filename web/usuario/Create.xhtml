@@ -13,35 +13,39 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{usuarioController.selected != null}" style="margin-bottom:10px">
                         <p:outputLabel value="#{bundle.Label_cedula}" for="cedula" />
-                        <p:inputText id="cedula" value="#{usuarioController.selected.cedula}" required="true"/>
+                        <p:inputText id="cedula" value="#{usuarioController.selected.cedula}" required="true" requiredMessage="#{bundle.RequiredMessage}"/>
                         <p:outputLabel value="#{bundle.Label_nombre}" for="nombre" />
-                        <p:inputText id="nombre" value="#{usuarioController.selected.nombre}"  />
+                        <p:inputText id="nombre" value="#{usuarioController.selected.nombre}"  required="true" requiredMessage="#{bundle.RequiredMessage}"/>
                         <p:outputLabel value="#{bundle.Label_apellido}" for="apellido" />
-                        <p:inputText id="apellido" value="#{usuarioController.selected.apellido}" />
+                        <p:inputText id="apellido" value="#{usuarioController.selected.apellido}" required="true" requiredMessage="#{bundle.RequiredMessage}"/>
                         <p:outputLabel value="#{bundle.Label_correo}" for="correo" />
-                        <p:inputText id="correo" value="#{usuarioController.selected.correo}" />
+                        <p:inputText id="correo" value="#{usuarioController.selected.correo}" required="true" requiredMessage="#{bundle.RequiredMessage}"/>
                         <p:outputLabel value="#{bundle.Label_contraseña}" for="contrasena" />
-                        <p:password id="contrasena" value="#{usuarioController.selected.contrasena}" />
+                        <p:password id="contrasena" value="#{usuarioController.selected.contrasena}" required="true" requiredMessage="#{bundle.RequiredMessage}"/>
                         <p:outputLabel value="#{bundle.Rol}" for="ROLidROL" />
-                        <p:selectOneMenu id="ROLidROL" value="#{usuarioController.selected.ROLidROL}" required="true">
+                        <p:selectOneMenu id="ROLidROL" value="#{usuarioController.selected.ROLidROL}" required="true" requiredMessage="#{bundle.RequiredMessage}">
+                            <f:selectItem itemLabel="Seleccione uno"/>
                             <f:selectItems value="#{rolController.itemsAvailableSelectOne}"
                                            var="ROLidROLItem"
                                            itemValue="#{ROLidROLItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.Estado}" for="ESTADOidESTADO" />
-                        <p:selectOneMenu id="ESTADOidESTADO" value="#{usuarioController.selected.ESTADOidESTADO}" required="true">
+                        <p:selectOneMenu id="ESTADOidESTADO" value="#{usuarioController.selected.ESTADOidESTADO}" required="true" requiredMessage="#{bundle.RequiredMessage}">
+                            <f:selectItem itemLabel="Seleccione uno"/>
                             <f:selectItems value="#{estadoController.itemsAvailableSelectOne}"
                                            var="ESTADOidESTADOItem"
                                            itemValue="#{ESTADOidESTADOItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.Grupo}" for="GRUPOidGRUPO" />
-                        <p:selectOneMenu id="GRUPOidGRUPO" value="#{usuarioController.selected.GRUPOidGRUPO}" required="true" >
+                        <p:selectOneMenu id="GRUPOidGRUPO" value="#{usuarioController.selected.GRUPOidGRUPO}" required="true" requiredMessage="#{bundle.RequiredMessage}" >
+                            <f:selectItem itemLabel="Seleccione uno"/>
                             <f:selectItems value="#{grupoController.itemsAvailableSelectOne}"
                                            var="GRUPOidGRUPOItem"
                                            itemValue="#{GRUPOidGRUPOItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.Seccional}" for="SECCIONALidSECCIONAL" />
-                        <p:selectOneMenu id="SECCIONALidSECCIONAL" value="#{usuarioController.selected.SECCIONALidSECCIONAL}" required="true">
+                        <p:selectOneMenu id="SECCIONALidSECCIONAL" value="#{usuarioController.selected.SECCIONALidSECCIONAL}" required="true" requiredMessage="#{bundle.RequiredMessage}">
+                            <f:selectItem itemLabel="Seleccione uno"/>
                             <f:selectItems value="#{seccionalController.itemsAvailableSelectOne}"
                                            var="SECCIONALidSECCIONALItem"
                                            itemValue="#{SECCIONALidSECCIONALItem}"/>

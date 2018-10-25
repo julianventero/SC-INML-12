@@ -13,7 +13,7 @@
                 <h:panelGroup id="display">
                    <p:panelGrid columns="2" rendered="#{regionalController.selected != null}" style="margin-bottom:10px">
                         <p:outputLabel value="#{bundle.Label_nombre}" for="nombre" />
-                        <p:inputText id="nombre" value="#{regionalController.selected.nombre}" />
+                        <p:inputText id="nombre" value="#{regionalController.selected.nombre}" required="true" requiredMessage="#{bundle.RequiredMessage}"/>
                     </p:panelGrid>
                     <div id="botones" align="Center">
                         <p:commandButton actionListener="#{regionalController.update}" value="#{bundle.Save}" update="display,:RegionalListForm:datalist,:growl" oncomplete="handleSubmit(args, 'RegionalEditDialog');" onclick="RegionalEditDialog.hide()"/>

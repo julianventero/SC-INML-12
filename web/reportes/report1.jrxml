@@ -3,6 +3,21 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<subDataset name="reporte3" uuid="497e4fab-caa7-4f81-8aab-d7361419e4ee">
+		<queryString language="SQL">
+			<![CDATA[SELECT
+     aspecto.`idASPECTO` AS aspecto_idASPECTO,
+     aspecto.`nombre` AS aspecto_nombre,
+     aspecto.`CRITERIO_idCRITERIO` AS aspecto_CRITERIO_idCRITERIO,
+     aspecto.`ESTADO_idESTADO` AS aspecto_ESTADO_idESTADO
+FROM
+     `aspecto` aspecto]]>
+		</queryString>
+		<field name="aspecto_idASPECTO" class="java.lang.Integer"/>
+		<field name="aspecto_nombre" class="java.lang.String"/>
+		<field name="aspecto_CRITERIO_idCRITERIO" class="java.lang.Integer"/>
+		<field name="aspecto_ESTADO_idESTADO" class="java.lang.Integer"/>
+	</subDataset>
 	<parameter name="fechaINI" class="java.util.Date">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>

@@ -13,9 +13,9 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{seccionalController.selected != null}" style="margin-bottom:10px">
                         <p:outputLabel value="#{bundle.Label_nombre}" for="nombre" />
-                        <p:inputText id="nombre" value="#{seccionalController.selected.nombre}" />
+                        <p:inputText id="nombre" value="#{seccionalController.selected.nombre}" required="true" requiredMessage="#{bundle.RequiredMessage}"/>
                         <p:outputLabel value="#{bundle.Regional}" for="REGIONALidREGIONAL" />
-                        <p:selectOneMenu id="REGIONALidREGIONAL" value="#{seccionalController.selected.REGIONALidREGIONAL}" >
+                        <p:selectOneMenu id="REGIONALidREGIONAL" value="#{seccionalController.selected.REGIONALidREGIONAL}" required="true" requiredMessage="#{bundle.RequiredMessage}">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{regionalController.itemsAvailableSelectOne}"
                                            var="REGIONALidREGIONALItem"

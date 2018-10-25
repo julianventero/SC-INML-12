@@ -13,11 +13,12 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{muestraController.selected != null}" style="margin-bottom:10px">
                         <p:outputLabel value="#{bundle.Muestra_planeada}" for="planeada" />
-                        <p:inputText id="planeada" value="#{muestraController.selected.planeada}" />
+                        <p:inputText id="planeada" value="#{muestraController.selected.planeada}" required="true" requiredMessage="#{bundle.RequiredMessage}"/>
                         <p:outputLabel value="#{bundle.fechaMuestra}" for="fechaMuestra" />
-                        <p:calendar id="fechaMuestra" pattern="MM/dd/yyyy" value="#{muestraController.selected.fechaMuestra}" showOn="button"/>
+                        <p:calendar id="fechaMuestra" pattern="MM/dd/yyyy" value="#{muestraController.selected.fechaMuestra}" showOn="button" required="true" requiredMessage="#{bundle.RequiredMessage}"/>
                         <p:outputLabel value="#{bundle.Encuestas}" for="ENCUESTAidENCUESTA" />
-                        <p:selectOneMenu id="ENCUESTAidENCUESTA" value="#{muestraController.selected.ENCUESTAidENCUESTA}" required="true">
+                        <p:selectOneMenu id="ENCUESTAidENCUESTA" value="#{muestraController.selected.ENCUESTAidENCUESTA}" required="true" requiredMessage="#{bundle.RequiredMessage}">
+                            <f:selectItem itemLabel="Seleccione uno"/>
                             <f:selectItems value="#{encuestaController.itemsAvailableSelectOne}"
                                            var="ENCUESTAidENCUESTAItem"
                                            itemValue="#{ENCUESTAidENCUESTAItem}"/>

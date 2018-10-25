@@ -13,7 +13,7 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{estadoController.selected != null}" style="margin-bottom:10px">
                         <p:outputLabel value="#{bundle.Label_nombre}" for="nombre" />
-                        <p:inputText id="nombre" value="#{estadoController.selected.nombre}" />
+                        <p:inputText id="nombre" value="#{estadoController.selected.nombre}" required="true" requiredMessage="#{bundle.RequiredMessage}"/>
                     </p:panelGrid>
                     <div id="botones" align="Center">
                         <p:commandButton actionListener="#{estadoController.update}" value="#{bundle.Save}" update="display,:EstadoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EstadoEditDialog');" onclick="EstadoEditDialog.hide()"/>

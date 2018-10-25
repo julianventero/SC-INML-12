@@ -13,13 +13,15 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{preguntasParametrosMedicionController.selected != null}" style="margin-bottom:10px">
                         <p:outputLabel value="#{bundle.Preguntas}" for="PREGUNTASidPREGUNTAS" />
-                        <p:selectOneMenu id="PREGUNTASidPREGUNTAS" value="#{preguntasParametrosMedicionController.selected.PREGUNTASidPREGUNTAS}" required="true">
+                        <p:selectOneMenu id="PREGUNTASidPREGUNTAS" value="#{preguntasParametrosMedicionController.selected.PREGUNTASidPREGUNTAS}" required="true" requiredMessage="#{bundle.RequiredMessage}">
+                            <f:selectItem itemLabel="Seleccione uno"/>
                             <f:selectItems value="#{preguntasController.itemsAvailableSelectOne}"
                                            var="PREGUNTASidPREGUNTASItem"
                                            itemValue="#{PREGUNTASidPREGUNTASItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.Parametros_Medicion}" />
-                        <p:selectOneMenu id="PARAMETROSMEDICIONidPARAMETROSMEDICION" value="#{preguntasParametrosMedicionController.selected.PARAMETROSMEDICIONidPARAMETROSMEDICION}" required="true">
+                        <p:selectOneMenu id="PARAMETROSMEDICIONidPARAMETROSMEDICION" value="#{preguntasParametrosMedicionController.selected.PARAMETROSMEDICIONidPARAMETROSMEDICION}" required="true" requiredMessage="#{bundle.RequiredMessage}">
+                            <f:selectItem itemLabel="Seleccione uno"/>
                             <f:selectItems value="#{parametrosMedicionController.itemsAvailableSelectOne}"
                                            var="PARAMETROSMEDICIONidPARAMETROSMEDICIONItem"
                                            itemValue="#{PARAMETROSMEDICIONidPARAMETROSMEDICIONItem}"/>

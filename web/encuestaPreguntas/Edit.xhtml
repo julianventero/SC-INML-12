@@ -13,14 +13,14 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{encuestaPreguntasController.selected != null}" style="margin-bottom:10px">
                         <p:outputLabel value="#{bundle.Encuestas}" for="ENCUESTAidENCUESTA" />
-                        <p:selectOneMenu id="ENCUESTAidENCUESTA" value="#{encuestaPreguntasController.selected.ENCUESTAidENCUESTA}" required="true">
+                        <p:selectOneMenu id="ENCUESTAidENCUESTA" value="#{encuestaPreguntasController.selected.ENCUESTAidENCUESTA}" required="true" requiredMessage="#{bundle.RequiredMessage}">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{encuestaController.itemsAvailableSelectOne}"
                                            var="ENCUESTAidENCUESTAItem"
                                            itemValue="#{ENCUESTAidENCUESTAItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.Preguntas}" for="PREGUNTASidPREGUNTAS" />
-                        <p:selectOneMenu id="PREGUNTASidPREGUNTAS" value="#{encuestaPreguntasController.selected.PREGUNTASidPREGUNTAS}" required="true">
+                        <p:selectOneMenu id="PREGUNTASidPREGUNTAS" value="#{encuestaPreguntasController.selected.PREGUNTASidPREGUNTAS}" required="true" requiredMessage="#{bundle.RequiredMessage}">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{preguntasController.itemsAvailableSelectOne}"
                                            var="PREGUNTASidPREGUNTASItem"
