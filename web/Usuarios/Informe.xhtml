@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+        
+    
+
+        <ui:composition template="/template-usuario.xhtml">
+            
+            
+            
+            <ui:define name="contenido">
+            <h3>Informe Estadístico</h3>
+            
+            <h:form>
+            <p:commandButton id="createButton" icon="ui-icon-plus"   value="Crear Informe Estadístico" actionListener="#{muestraController.prepareCreate}" update=":MuestraCreateForm" oncomplete="PF('MuestraCreateDialog').show()"/>
+            </h:form>
+            
+            
+            <p:dialog id="MuestraCreateDlg" widgetVar="MuestraCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="Crear Nuevo Informe Estadístico">
+            <h:form id="MuestraCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{muestraController.selected != null}">
+                        
+                        <p:outputLabel value="#{bundle.Servicio_Forense}" for="SERVICIOFORENSEidSERVICIOFORENSE"  />
+                        <p:selectOneMenu id="SERVICIOFORENSEidSERVICIOFORENSE" value="#{muestraController.servicio}" required="true" requiredMessage="#{bundle.RequiredMessage}" >
+                            <f:selectItem itemLabel="Seleccione uno" />
+                            <f:selectItems value="#{servicioForenseController.itemsAvailableSelectOne}"
+                                           var="SERVICIOFORENSEidSERVICIOFORENSEItem"
+                                           itemValue="#{SERVICIOFORENSEidSERVICIOFORENSEItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="Fecha inicio" for="fechaMuestra" />
+                        <p:calendar id="fechaMuestra" pattern="MM/dd/yyyy" value="#{muestraController.selected.fechaMuestra}" showOn="button" required="true" requiredMessage="#{bundle.RequiredMessage}"/>
+                        <p:outputLabel value="Fecha de finalización" for="fechaMuestra2" />
+                        <p:calendar id="fechaMuestra2" pattern="MM/dd/yyyy" value="#{muestraController.selected.fechaMuestra}" showOn="button" required="true" requiredMessage="#{bundle.RequiredMessage}"/>
+                        <p:outputLabel value="#{bundle.Municipio}" for="MUNICIPIOidMUNICIPIO" />
+                        <p:selectOneMenu id="MUNICIPIOidMUNICIPIO"  required="true" requiredMessage="#{bundle.RequiredMessage}">
+                            <f:selectItem itemLabel="Seleccione uno"/>
+                            <f:selectItems value="#{municipioController.itemsAvailableSelectOne}"
+                                           var="MUNICIPIOidMUNICIPIOItem"
+                                           itemValue="#{MUNICIPIOidMUNICIPIOItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <div id="botones" align="Center">
+                        <p:commandButton actionListener="#{muestraController.create}" value="Aceptar" update="display,:growl" oncomplete="handleSubmit(args,'MuestraCreateDialog');" onclick="MuestraCreateDialog.hide()"/>
+                        <p:commandButton value="#{bundle.Cancel}" onclick="MuestraCreateDialog.hide()"/>
+                    </div>    
+                </h:panelGroup>
+            </h:form>
+            </p:dialog>
+            </ui:define>
+
+        </ui:composition>
+
+    
+</html>
