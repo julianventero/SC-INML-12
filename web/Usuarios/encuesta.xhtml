@@ -42,7 +42,7 @@
                         </p:selectOneMenu>
                         
                     </p:panelGrid>
-                    <div id="botones" align="Center">
+                    <div id="botones" align="Center"> <br></br>
                         <p:commandButton actionListener="#{muestraController.create}" value="#{bundle.Save}" update="display,:growl" oncomplete="handleSubmit(args,'MuestraCreateDialog');" onclick="MuestraCreateDialog.hide()"/>
                         <p:commandButton value="#{bundle.Cancel}" onclick="MuestraCreateDialog.hide()"/>
                     </div>    
@@ -91,7 +91,7 @@
                                            itemValue="#{SECCIONALidSECCIONALItem}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
-                <div id="botones" align="Center">
+                <div id="botones" align="Center"><br></br>
                     <p:commandButton  action="#{muestraController.datosRespuesta}" value="#{bundle.Save}"   update=":growl, :formulario" onclick="RespuestaCreateDialog.hide()" />
                 </div>
             </h:form>
